@@ -1,6 +1,7 @@
 import { handleActions } from "redux-actions";
 
 import * as actions from "../actions";
+import { LOCAL_STORAGE_KEY } from "../../../constants/localStorageKeys";
 
 const defaultState = {
   isLoading: false,
@@ -19,11 +20,12 @@ const authReducer = handleActions(
     [actions.LOGIN_SUCCESS]: (state, { payload }) => {
       const { accessToken, ...userInfo } = payload.response;
 
+      localStorage.setItem(LOCAL_STORAGE_KEY.TOKEN, accessToken);
+
       return {
         isLoading: false,
         isAuth: true,
         userInfo,
-        accessToken,
       };
     },
     [actions.LOGIN_FAIL]: (state, { payload }) => ({

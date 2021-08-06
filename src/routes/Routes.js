@@ -2,9 +2,10 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 
 import { ROUTES } from "./routesNames";
+import PrivateRoute from "./PrivateRoute";
 import LoginPageContainer from "../pages/LogInPage/containers/LoginPageContainer";
 import ProductsPageContainer from "../pages/ProductsPage/containers/ProductsPageContainer";
-import PrivateRoute from "./PrivateRoute";
+import ProductDetailsPageContainer from "../pages/ProductDetailsPage/containers/ProductDetailsPageContainer";
 
 const Routes = () => {
   return (
@@ -23,7 +24,7 @@ const Routes = () => {
       <PrivateRoute
         exact
         path={ROUTES.PRODUCT_DETAILS}
-        component={() => <div>PRODUCT_DETAILS</div>}
+        component={ProductDetailsPageContainer}
       />
       <PrivateRoute
         exact

@@ -3,25 +3,25 @@ import { handleActions } from "redux-actions";
 import * as actions from "../actions";
 
 const defaultState = {
-  productsList: [],
+  productInfo: [],
   isLoading: false,
   errors: null,
 };
 
-const productsPageReducer = handleActions(
+const productDetailsPageReducer = handleActions(
   {
-    [actions.GET_PRODUCTS_REQUEST]: (state) => ({
+    [actions.GET_PRODUCT_DETAILS_REQUEST]: (state) => ({
       ...state,
       isLoading: true,
     }),
-    [actions.GET_PRODUCTS_SUCCESS]: (state, { payload }) => {
+    [actions.GET_PRODUCT_DETAILS_SUCCESS]: (state, { payload }) => {
       return {
         ...state,
         isLoading: false,
-        productsList: payload.response,
+        productInfo: payload.response,
       };
     },
-    [actions.GET_PRODUCTS_FAIL]: (state, { payload }) => ({
+    [actions.GET_PRODUCT_DETAILS_FAIL]: (state, { payload }) => ({
       ...state,
       isLoading: false,
       errors: payload,
@@ -30,4 +30,4 @@ const productsPageReducer = handleActions(
   defaultState
 );
 
-export default productsPageReducer;
+export default productDetailsPageReducer;

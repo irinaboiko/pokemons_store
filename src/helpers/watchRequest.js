@@ -10,7 +10,7 @@ const { REQUEST_POSTFIX, SUCCESS_POSTFIX, FAIL_POSTFIX } = POSTFIXES;
 function* sendRequest(action) {
   try {
     const callMethod = apiCallsMapping(action);
-    const response = yield call(callMethod, action.type);
+    const response = yield call(callMethod, action.payload);
 
     const NEW_SUCCESS_ACTION = createActionWithPostfix(
       action,

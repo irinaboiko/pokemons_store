@@ -10,6 +10,7 @@ const LoginPageLayout = ({
   loginData,
   handleChange,
   handleSubmit,
+  errors,
 }) => {
   return (
     <Box className={classes.wrapper}>
@@ -40,6 +41,7 @@ const LoginPageLayout = ({
             LOG IN
           </Button>
         </Box>
+        {errors && <div>{errors}</div>}
       </form>
       <Box className={classes.signInWrapper}>
         <Typography className={classes.text} variant="body2">

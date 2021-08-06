@@ -17,4 +17,4 @@ const OutlinedInput = ({ value, label, handleChange, classes, type, name }) => {
   );
 };
 
-export default withStyles(styles)(OutlinedInput);
+export default React.memo(withStyles(styles)(OutlinedInput));

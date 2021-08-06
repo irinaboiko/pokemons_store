@@ -9,7 +9,11 @@ import {
 } from "../pages/LogInPage/sagas/loginWatcher";
 
 function* rootSaga() {
-  yield all([apiCallsSaga(), loginWatcher(), launchSaga()]);
+  yield all([
+    apiCallsSaga(),
+    //loginWatcher(),
+    //launchSaga(),
+  ]);
 }
 
 export default rootSaga;
