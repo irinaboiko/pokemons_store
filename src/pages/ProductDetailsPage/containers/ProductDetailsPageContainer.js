@@ -9,13 +9,13 @@ const ProductDetailsPageContainer = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
 
-  const { productInfo } = useSelector((state) => state.productDetailsPage);
+  const { productInfo, isLoading } = useSelector((state) => state.productDetailsPage);
 
   useEffect(() => {
     dispatch(GET_PRODUCT_DETAILS_REQUEST(id));
   }, [dispatch]);
 
-  return <ProductDetailsPageLayout productInfo={productInfo} />;
+  return <ProductDetailsPageLayout productInfo={productInfo} isLoading={isLoading} />;
 };
 
 export default ProductDetailsPageContainer;

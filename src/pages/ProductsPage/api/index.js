@@ -1,3 +1,3 @@
 import api from "../../../api/config";
 
-export const getProducts = () => api.get("/products");
+export const getProducts = (page) => api.get(`/products?page=${page}`);
