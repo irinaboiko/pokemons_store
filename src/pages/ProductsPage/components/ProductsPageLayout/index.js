@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Box } from "@material-ui/core";
+import { Box, Button } from "@material-ui/core";
 import DefaultBackdrop from "../../../../commonComponents/Spinner/DefaultSpinner";
 import DefaultPagination from "../../../../commonComponents/Pagination/DefaultPagination";
 
@@ -20,17 +20,27 @@ const ProductsPageLayout = ({
         <>
           {products.map((product) => {
             return (
-              <Box
-                onClick={() => {
-                  handleGoTOProductDetails(product.id);
-                }}
-                key={product.id}
-              >
-                <div>
-                  <img src={product.image} alt="product image" />
-                </div>
-                <p>Name: {product.name}</p>
-                <p>Price: {product.price}</p>
+              <Box key={product.id}>
+                <Box
+                  onClick={() => {
+                    handleGoTOProductDetails(product.id);
+                  }}
+                >
+                  <div>
+                    <img src={product.image} alt="product image" />
+                  </div>
+                  <p>Name: {product.name}</p>
+                  <p>Price: {product.price}</p>
+                </Box>
+                <Button
+                  onClick={() => {
+                    console.log(product.name);
+                  }}
+                  variant="outlined"
+                  color="primary"
+                >
+                  Add To Cart
+                </Button>
               </Box>
             );
           })}

@@ -16,15 +16,21 @@ const ProductsPageContainer = () => {
 
   const handleGoTOProductDetails = useCallback(
     (id) => {
-      //console.log(id);
       history.push(`${ROUTES.PRODUCTS}/${id}`);
     },
     [history]
   );
 
-  const handlePageChange = useCallback((event, page) => {
-    dispatch(CHANGE_PAGE(page));
-  }, []);
+  const handleAddToCart = useCallback();
+
+  const handlePageChange = useCallback(
+    (event, page) => {
+      if (page !== currentPage) {
+        dispatch(CHANGE_PAGE(page));
+      }
+    },
+    [currentPage]
+  );
 
   useEffect(() => {
     dispatch(GET_PRODUCTS_REQUEST(currentPage));

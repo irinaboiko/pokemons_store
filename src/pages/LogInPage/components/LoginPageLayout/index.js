@@ -1,9 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Box, Button, Typography, withStyles } from "@material-ui/core";
+import { Link } from "react-router-dom";
 
 import styles from "./styles";
 import OutlinedInput from "../../../../commonComponents/Inputs/OutlinedInput";
+import { ROUTES } from "../../../../routes/routesNames";
 
 const LoginPageLayout = ({
   classes,
@@ -48,9 +50,11 @@ const LoginPageLayout = ({
           Don't have an account?
         </Typography>
         <Box className={classes.inputWrapper}>
-          <Button variant="outlined" color="primary">
-            SIGN IN
-          </Button>
+          <Link to={ROUTES.SING_UP_PAGE}>
+            <Button variant="outlined" color="primary">
+              SIGN IN
+            </Button>
+          </Link>
         </Box>
       </Box>
     </Box>
