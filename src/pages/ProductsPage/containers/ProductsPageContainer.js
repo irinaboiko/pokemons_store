@@ -5,13 +5,16 @@ import { useHistory } from "react-router-dom";
 import ProductsPageLayout from "../components/ProductsPageLayout";
 import { CHANGE_PAGE, GET_PRODUCTS_REQUEST } from "../actions";
 import { ROUTES } from "../../../routes/routesNames";
+import { useCart } from "../../../hooks";
 
 const ProductsPageContainer = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
+  const [cartValues, setCartValues, handleAddToCart] = useCart();
+
   const { productsList, currentPage, isLoading } = useSelector(
-    (state) => state.productsPage
+    (state) => state.products
   );
 
   const handleGoTOProductDetails = useCallback(
@@ -20,8 +23,6 @@ const ProductsPageContainer = () => {
     },
     [history]
   );
-
-  const handleAddToCart = useCallback();
 
   const handlePageChange = useCallback(
     (event, page) => {
@@ -43,6 +44,7 @@ const ProductsPageContainer = () => {
       isLoading={isLoading}
       handlePageChange={handlePageChange}
       currentPage={currentPage}
+      handleAddToCart={handleAddToCart}
     />
   );
 };

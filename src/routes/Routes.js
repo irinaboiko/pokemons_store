@@ -9,6 +9,7 @@ import SingUpPageContainer from "../pages/SingUpPage/containers/SingUpPageContai
 import ProductsPageContainer from "../pages/ProductsPage/containers/ProductsPageContainer";
 import ProductDetailsPageContainer from "../pages/ProductDetailsPage/containers/ProductDetailsPageContainer";
 import AccountPageContainer from "../pages/AccountPage/containers/AccountPageContainer";
+import CartPageContainer from "../pages/CartPage/containers/CartPageContainer";
 
 const Routes = () => {
   return (
@@ -27,14 +28,10 @@ const Routes = () => {
       />
       <PrivateRoute
         exact
-        path={ROUTES.CART}
-        component={() => <div>CART</div>}
-      />
-      <PrivateRoute
-        exact
         path={ROUTES.ACCOUNT}
         component={AccountPageContainer}
       />
+      <PrivateRoute exact path={ROUTES.CART} component={CartPageContainer} />
     </Switch>
   );
 };

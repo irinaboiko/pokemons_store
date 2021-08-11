@@ -13,4 +13,8 @@ export default [
     title: "Account",
     path: ROUTES.ACCOUNT,
   },
+  {
+    title: "Cart",
+    path: ROUTES.CART,
+  },
 ];

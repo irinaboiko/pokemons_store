@@ -1,7 +1,6 @@
 import { handleActions } from "redux-actions";
 
 import * as actions from "../actions";
-import { CHANGE_PAGE } from "../actions";
 
 const defaultState = {
   productsList: [],
@@ -28,6 +27,7 @@ const productsPageReducer = handleActions(
       isLoading: false,
       errors: payload,
     }),
+
     [actions.CHANGE_PAGE]: (state, { payload }) => ({
       ...state,
       currentPage: payload,

@@ -1,10 +1,22 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Box } from "@material-ui/core";
+import { Box, Button } from "@material-ui/core";
 
 import DefaultBackdrop from "../../../../commonComponents/Spinner/DefaultSpinner";
 
-const ProductDetailsPageLayout = ({ productInfo, isLoading }) => {
+const ProductDetailsPageLayout = ({
+  productInfo,
+  isLoading,
+  handleAddToCart,
+}) => {
+  const cartInfo = {
+    id: productInfo.id,
+    name: productInfo.name,
+    image: productInfo.image,
+    quantity: 1,
+    price: productInfo.price,
+  };
+
   return (
     <Box>
       {isLoading ? (
@@ -39,6 +51,15 @@ const ProductDetailsPageLayout = ({ productInfo, isLoading }) => {
               );
             })}
           </div>
+          <Button
+            onClick={() => {
+              handleAddToCart(cartInfo);
+            }}
+            variant="outlined"
+            color="primary"
+          >
+            Add To Cart
+          </Button>
         </>
       )}
     </Box>

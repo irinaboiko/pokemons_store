@@ -9,10 +9,6 @@ import * as productDetailsPageAPI from "../pages/ProductDetailsPage/api";
 
 import * as cartPageActions from "../pages/CartPage/actions";
 import * as cartPageAPI from "../pages/CartPage/api";
-import {
-  EDIT_CART_REQUEST,
-  REMOVE_ITEM_FROM_CART_REQUEST,
-} from "../pages/CartPage/actions";
 
 const apiCallsMapping = (action) => {
   const mapping = {
@@ -23,9 +19,11 @@ const apiCallsMapping = (action) => {
     [productDetailsPageActions.GET_PRODUCT_DETAILS_REQUEST]:
       productDetailsPageAPI.getProductDetails,
 
+    [cartPageActions.GET_CART_INFO_REQUEST]: cartPageAPI.getCartInfo,
     [cartPageActions.ADD_TO_CART_REQUEST]: cartPageAPI.addToCart,
-    [cartPageActions.EDIT_CART_REQUEST]: cartPageAPI.addToCart,
-    [cartPageActions.REMOVE_ITEM_FROM_CART_REQUEST]: cartPageAPI.addToCart,
+    [cartPageActions.EDIT_CART_REQUEST]: cartPageAPI.editCart,
+    [cartPageActions.REMOVE_ITEM_FROM_CART_REQUEST]:
+      cartPageAPI.removeItemFromCart,
   };
 
   if (!mapping[action.type]) {

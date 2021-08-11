@@ -1,5 +1,5 @@
 import React from "react";
-import AccountPageLayout from "../components";
+import AccountPageLayout from "../components/AccountPageLayout";
 import { useSelector } from "react-redux";
 
 const AccountPageContainer = () => {

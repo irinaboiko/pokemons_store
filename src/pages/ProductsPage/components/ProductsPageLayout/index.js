@@ -10,8 +10,8 @@ const ProductsPageLayout = ({
   isLoading,
   handlePageChange,
   currentPage,
+  handleAddToCart,
 }) => {
-  //console.log(products);
   return (
     <Box>
       {isLoading ? (
@@ -34,7 +34,13 @@ const ProductsPageLayout = ({
                 </Box>
                 <Button
                   onClick={() => {
-                    console.log(product.name);
+                    handleAddToCart({
+                      id: product.id,
+                      name: product.name,
+                      image: product.image,
+                      quantity: 1,
+                      price: product.price,
+                    });
                   }}
                   variant="outlined"
                   color="primary"
