@@ -1,10 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Box, Button } from "@material-ui/core";
+import { Box, Button, withStyles } from "@material-ui/core";
+
 import DefaultBackdrop from "../../../../commonComponents/Spinner/DefaultSpinner";
 import DefaultPagination from "../../../../commonComponents/Pagination/DefaultPagination";
+import ProductCard from "../../../../commonComponents/ProductCards/ProductCart";
+
+import styles from "./styles";
 
 const ProductsPageLayout = ({
+  classes,
   products,
   handleGoTOProductDetails,
   isLoading,
@@ -17,23 +22,20 @@ const ProductsPageLayout = ({
       {isLoading ? (
         <DefaultBackdrop />
       ) : (
-        <>
+        <Box className={classes.cardsWrapper}>
           {products.map((product) => {
             return (
               <Box key={product.id}>
-                <Box
-                  onClick={() => {
+                <ProductCard
+                  handleOnCardClick={() => {
                     handleGoTOProductDetails(product.id);
                   }}
-                >
-                  <div>
-                    <img src={product.image} alt="product image" />
-                  </div>
-                  <p>Name: {product.name}</p>
-                  <p>Price: {product.price}</p>
-                </Box>
-                <Button
-                  onClick={() => {
+                  productName={product.name}
+                  productImage={product.image}
+                  productPrice={product.price}
+                  actionText="Add to cart"
+                  handleOnButtonClick={() => {
+                    //console.log(product);
                     handleAddToCart({
                       id: product.id,
                       name: product.name,
@@ -42,15 +44,11 @@ const ProductsPageLayout = ({
                       price: product.price,
                     });
                   }}
-                  variant="outlined"
-                  color="primary"
-                >
-                  Add To Cart
-                </Button>
+                />
               </Box>
             );
           })}
-        </>
+        </Box>
       )}
       <div>
         <DefaultPagination
@@ -65,4 +63,4 @@ const ProductsPageLayout = ({
 
 ProductsPageLayout.propTypes = {};
 
-export default ProductsPageLayout;
+export default React.memo(withStyles(styles)(ProductsPageLayout));

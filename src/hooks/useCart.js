@@ -10,7 +10,7 @@ export default (initialValues) => {
 
   const handleAddToCart = useCallback(
     (cartInfo) => {
-      console.log(cartInfo);
+      //console.log(cartInfo);
       dispatch(ADD_TO_CART_REQUEST(cartInfo));
     },
     [cartValues]

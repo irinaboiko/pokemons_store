@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Box, Button } from "@material-ui/core";
 
 import DefaultBackdrop from "../../../../commonComponents/Spinner/DefaultSpinner";
+import ProductDetailsCard from "../../../../commonComponents/ProductCards/ProductDetailsCart";
 
 const ProductDetailsPageLayout = ({
   productInfo,
@@ -23,6 +24,14 @@ const ProductDetailsPageLayout = ({
         <DefaultBackdrop />
       ) : (
         <>
+          <ProductDetailsCard
+            productName={productInfo.name}
+            productId={productInfo.id}
+            productImage={productInfo.image}
+            productPrice={productInfo.price}
+            actionText="Add to cart"
+            //handleOnButtonClick
+          />
           <div>
             <img src={productInfo.image} alt="product image" />
           </div>

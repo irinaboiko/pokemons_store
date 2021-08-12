@@ -51,7 +51,7 @@ const SingUpPageLayout = ({ classes, singUpSata, handleChange }) => {
               label="Gender"
               name="gender"
               value={singUpSata.gender}
-              handleChange={handleChange}
+              onChange={handleChange}
             >
               <MenuItem value={"male"}>Male</MenuItem>
               <MenuItem value={"female"}>Female</MenuItem>

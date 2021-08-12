@@ -1,16 +1,24 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { Box, Button } from "@material-ui/core";
 
 import navItems from "./config/navItems";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { ROUTES } from "../../routes/routesNames";
 
 const Header = () => {
+  const history = useHistory();
+
   const cartProductsQuantity = useSelector(
     (state) => state.cart.cartInfo.quantity
   );
 
-  console.log(cartProductsQuantity);
+  const handleLogOut = useCallback(() => {
+    localStorage.clear();
+    history.push(ROUTES.LOG_IN_PAGE);
+  }, []);
+
+  //console.log(cartProductsQuantity);
 
   return (
     <Box>
@@ -21,6 +29,9 @@ const Header = () => {
           </Button>
         </Link>
       ))}
+      {/*<Button variant="outlined" onClick={handleLogOut}>
+        Log out
+      </Button>*/}
     </Box>
   );
 };

@@ -1,8 +1,8 @@
 import { call, put, takeEvery } from "redux-saga/effects";
 import { isEmpty } from "lodash";
 
-import { POSTFIXES } from "../constants/actionPostfixes";
-import apiCallsMapping from "../api/apiCallsMapping";
+import { POSTFIXES } from "../../constants/actionPostfixes";
+import apiCallsMapping from "../../api/apiCallsMapping";
 import createActionWithPostfix from "./actionPostfixCreator";
 
 const { REQUEST_POSTFIX, SUCCESS_POSTFIX, FAIL_POSTFIX } = POSTFIXES;

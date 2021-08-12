@@ -1,30 +1,21 @@
-import { takeEvery, take, select } from "redux-saga/effects";
+import { takeEvery, take, select, put } from "redux-saga/effects";
 import { REHYDRATE } from "redux-persist/es/constants";
 
-import { GET_CART_INFO_SUCCESS } from "../actions";
-import api from "../../../api/config";
+import { GET_CART_INFO_REQUEST, GET_CART_INFO_SUCCESS } from "../actions";
 
 const authSelector = (state) => state.auth;
 
-console.log(authSelector);
-
 export function* launchSaga(action) {
-  /*if (action) {
-    const { response } = action.payload;
-
-    yield (api.defaults.headers.Authorization = `Bearer ${response.accessToken}`);
-  } else {*/
   try {
     yield take(REHYDRATE);
-    const { accessToken } = yield select(authSelector);
+    const { isAuth } = yield select(authSelector);
 
-    if (accessToken) {
-      api.defaults.headers.Authorization = `Bearer ${accessToken}`;
+    if (isAuth) {
+      yield put(GET_CART_INFO_REQUEST());
     }
   } catch (error) {
     yield console.log(error);
   }
-  //}
 }
 
 export function* cartWatcher() {

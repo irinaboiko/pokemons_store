@@ -6,7 +6,7 @@ export default (initialValues) => {
   const handleChange = useCallback(
     (event) => {
       const { name, value } = event.target;
-      console.log(name, value);
+      console.log(value);
 
       setFormValues({
         ...formValues,
