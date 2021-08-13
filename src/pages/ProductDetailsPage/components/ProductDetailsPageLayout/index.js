@@ -1,9 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Box, Button } from "@material-ui/core";
+import { Box } from "@material-ui/core";
 
 import DefaultBackdrop from "../../../../commonComponents/Spinner/DefaultSpinner";
-import ProductDetailsCard from "../../../../commonComponents/ProductCards/ProductDetailsCart";
+import ProductDetailsCard from "../../../../commonComponents/ProductCards/ProductDetailsCard";
+import BackButton from "../../../../commonComponents/Buttons/BackButton";
 
 const ProductDetailsPageLayout = ({
   productInfo,
@@ -24,51 +25,19 @@ const ProductDetailsPageLayout = ({
         <DefaultBackdrop />
       ) : (
         <>
+          <BackButton />
           <ProductDetailsCard
             productName={productInfo.name}
             productId={productInfo.id}
             productImage={productInfo.image}
             productPrice={productInfo.price}
             actionText="Add to cart"
-            //handleOnButtonClick
-          />
-          <div>
-            <img src={productInfo.image} alt="product image" />
-          </div>
-          <div>Name: {productInfo.name}</div>
-          <div>Id: {productInfo.id}</div>
-          <div>Price: {productInfo.price}</div>
-          <div>
-            Abilities:
-            {productInfo.abilities?.map((ability) => {
-              return (
-                <div key={ability.title}>
-                  <div>{ability.title}</div>
-                  <div>{ability.description}</div>
-                </div>
-              );
-            })}
-          </div>
-          <div>
-            Stats:
-            {productInfo.stats?.map((stat) => {
-              return (
-                <div key={stat.title}>
-                  <div>{stat.title}</div>
-                  <div>{stat.value}</div>
-                </div>
-              );
-            })}
-          </div>
-          <Button
-            onClick={() => {
+            handleOnButtonClick={() => {
               handleAddToCart(cartInfo);
             }}
-            variant="outlined"
-            color="primary"
-          >
-            Add To Cart
-          </Button>
+            abilities={productInfo.abilities}
+            stats={productInfo.stats}
+          />
         </>
       )}
     </Box>

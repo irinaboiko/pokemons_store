@@ -1,16 +1,24 @@
 import React from "react";
 import {
+  Box,
   Button,
   Card,
   CardActionArea,
   CardActions,
   CardContent,
   CardMedia,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableRow,
   Typography,
   withStyles,
 } from "@material-ui/core";
 
 import styles from "./styles";
+import TableCharacteristics from "../../Tables/CharacteristicsTable";
 
 const ProductDetailsCard = ({
   classes,
@@ -20,6 +28,8 @@ const ProductDetailsCard = ({
   productPrice,
   actionText,
   handleOnButtonClick,
+  abilities,
+  stats,
 }) => {
   return (
     <Card className={classes.cart}>
@@ -37,6 +47,20 @@ const ProductDetailsCard = ({
             {actionText}
           </Button>
         </CardActions>
+        <Box>
+          <TableCharacteristics
+            characteristics={abilities}
+            tableTitle="Abilities"
+            rowTitle="title"
+            rowInfo="description"
+          />
+          <TableCharacteristics
+            characteristics={stats}
+            tableTitle="Stats"
+            rowTitle="title"
+            rowInfo="value"
+          />
+        </Box>
       </CardContent>
     </Card>
   );

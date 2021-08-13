@@ -1,12 +1,13 @@
 import React, { useCallback } from "react";
-import { Box, Button } from "@material-ui/core";
+import { Box, Button, withStyles } from "@material-ui/core";
 
 import navItems from "./config/navItems";
 import { Link, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { ROUTES } from "../../routes/routesNames";
 
-const Header = () => {
+import styles from "./styles";
+
+const Header = ({ classes }) => {
   const history = useHistory();
 
   const cartProductsQuantity = useSelector(
@@ -15,13 +16,11 @@ const Header = () => {
 
   const handleLogOut = useCallback(() => {
     localStorage.clear();
-    history.push(ROUTES.LOG_IN_PAGE);
+    history.go(0);
   }, []);
 
-  //console.log(cartProductsQuantity);
-
   return (
-    <Box>
+    <Box className={classes.headerWrapper}>
       {navItems.map(({ title, path }) => (
         <Link to={path} key={path}>
           <Button variant="outlined">
@@ -29,11 +28,11 @@ const Header = () => {
           </Button>
         </Link>
       ))}
-      {/*<Button variant="outlined" onClick={handleLogOut}>
+      <Button variant="outlined" onClick={handleLogOut}>
         Log out
-      </Button>*/}
+      </Button>
     </Box>
   );
 };
 
-export default Header;
+export default React.memo(withStyles(styles)(Header));

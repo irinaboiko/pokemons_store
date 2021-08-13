@@ -42,6 +42,22 @@ const cartPageReducer = handleActions(
       isLoading: false,
       errors: payload.response,
     }),
+
+    [actions.REMOVE_ITEM_FROM_CART_REQUEST]: (state) => ({
+      ...state,
+      isLoading: true,
+    }),
+    [actions.REMOVE_ITEM_FROM_CART_SUCCESS]: (state, { payload }) => {
+      console.log(payload);
+
+      return {
+        ...state,
+      };
+    },
+    [actions.REMOVE_ITEM_FROM_CART_FAIL]: (state, { payload }) => ({
+      isLoading: false,
+      errors: payload.response,
+    }),
   },
   defaultState
 );
