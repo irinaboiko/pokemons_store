@@ -1,24 +1,17 @@
 import React from "react";
 import {
   Box,
-  Button,
   Card,
-  CardActionArea,
   CardActions,
   CardContent,
   CardMedia,
-  Paper,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableRow,
   Typography,
   withStyles,
 } from "@material-ui/core";
 
 import styles from "./styles";
 import TableCharacteristics from "../../Tables/CharacteristicsTable";
+import PurpleButton from "../../Buttons/PurpleButton";
 
 const ProductDetailsCard = ({
   classes,
@@ -39,13 +32,10 @@ const ProductDetailsCard = ({
         <Typography variant="body1">{`Product ID: ${productId}`}</Typography>
         <Typography variant="h4">{`$${productPrice}`}</Typography>
         <CardActions>
-          <Button
-            onClick={handleOnButtonClick}
-            variant="outlined"
-            color="primary"
-          >
-            {actionText}
-          </Button>
+          <PurpleButton
+            handleOnButtonClick={handleOnButtonClick}
+            buttonTitle={actionText}
+          />
         </CardActions>
         <Box>
           <TableCharacteristics

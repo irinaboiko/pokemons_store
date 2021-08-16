@@ -10,6 +10,7 @@ import {
   withStyles,
 } from "@material-ui/core";
 
+import PurpleButton from "../../Buttons/PurpleButton";
 import styles from "./styles";
 
 const ProductCard = ({
@@ -34,13 +35,10 @@ const ProductCard = ({
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button
-          onClick={handleOnButtonClick}
-          variant="outlined"
-          color="primary"
-        >
-          {actionText}
-        </Button>
+        <PurpleButton
+          handleOnButtonClick={handleOnButtonClick}
+          buttonTitle={actionText}
+        />
       </CardActions>
     </Card>
   );

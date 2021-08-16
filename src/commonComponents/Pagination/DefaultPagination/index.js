@@ -1,9 +1,20 @@
 import React from "react";
 import { Pagination } from "@material-ui/lab";
+import { withStyles } from "@material-ui/core";
 
-const DefaultPagination = ({ pageCount, onPageChange, currentPage }) => {
+import styles from "./styles";
+
+const DefaultPagination = ({
+  classes,
+  pageCount,
+  onPageChange,
+  currentPage,
+}) => {
   return (
     <Pagination
+      classes={{
+        root: classes.rootPagination,
+      }}
       page={currentPage}
       count={pageCount}
       onChange={onPageChange}
@@ -13,4 +24,4 @@ const DefaultPagination = ({ pageCount, onPageChange, currentPage }) => {
   );
 };
 
-export default DefaultPagination;
+export default React.memo(withStyles(styles)(DefaultPagination));

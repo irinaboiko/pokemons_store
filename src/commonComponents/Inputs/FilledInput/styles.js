@@ -1,6 +1,7 @@
 const styles = () => ({
   input: {
     fontSize: 22,
+    backgroundColor: "#ffffff",
   },
 });
 

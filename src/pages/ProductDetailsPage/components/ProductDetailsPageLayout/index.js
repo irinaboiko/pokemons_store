@@ -1,15 +1,19 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Box } from "@material-ui/core";
+import { Box, withStyles } from "@material-ui/core";
 
 import DefaultBackdrop from "../../../../commonComponents/Spinner/DefaultSpinner";
 import ProductDetailsCard from "../../../../commonComponents/ProductCards/ProductDetailsCard";
 import BackButton from "../../../../commonComponents/Buttons/BackButton";
 
+import styles from "./styles";
+
 const ProductDetailsPageLayout = ({
+  classes,
   productInfo,
   isLoading,
   handleAddToCart,
+  isCartLoading,
 }) => {
   const cartInfo = {
     id: productInfo.id,
@@ -24,7 +28,7 @@ const ProductDetailsPageLayout = ({
       {isLoading ? (
         <DefaultBackdrop />
       ) : (
-        <>
+        <Box className={classes.productWrapper}>
           <BackButton />
           <ProductDetailsCard
             productName={productInfo.name}
@@ -38,7 +42,8 @@ const ProductDetailsPageLayout = ({
             abilities={productInfo.abilities}
             stats={productInfo.stats}
           />
-        </>
+          {isCartLoading && <DefaultBackdrop />}
+        </Box>
       )}
     </Box>
   );
@@ -46,4 +51,4 @@ const ProductDetailsPageLayout = ({
 
 ProductDetailsPageLayout.propTypes = {};
 
-export default ProductDetailsPageLayout;
+export default React.memo(withStyles(styles)(ProductDetailsPageLayout));

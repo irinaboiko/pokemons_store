@@ -3,11 +3,11 @@ import { TextField, withStyles } from "@material-ui/core";
 
 import styles from "./styles";
 
-const OutlinedInput = ({ value, label, handleChange, classes, type, name }) => {
+const FilledInput = ({ value, label, handleChange, classes, type, name }) => {
   return (
     <TextField
       className={classes.input}
-      variant="outlined"
+      variant="filled"
       value={value}
       label={label}
       onChange={handleChange}
@@ -17,4 +17,4 @@ const OutlinedInput = ({ value, label, handleChange, classes, type, name }) => {
   );
 };
 
-export default React.memo(withStyles(styles)(OutlinedInput));
+export default React.memo(withStyles(styles)(FilledInput));

@@ -6,13 +6,18 @@ import { Link, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import styles from "./styles";
+import PurpleButton from "../Buttons/PurpleButton";
 
 const Header = ({ classes }) => {
   const history = useHistory();
 
-  const cartProductsQuantity = useSelector(
+  let cartProductsQuantity = useSelector(
     (state) => state.cart.cartInfo.quantity
   );
+
+  if (!cartProductsQuantity) {
+    cartProductsQuantity = 0;
+  }
 
   const handleLogOut = useCallback(() => {
     localStorage.clear();
@@ -23,14 +28,14 @@ const Header = ({ classes }) => {
     <Box className={classes.headerWrapper}>
       {navItems.map(({ title, path }) => (
         <Link to={path} key={path}>
-          <Button variant="outlined">
-            {title === "Cart" ? `${title} (${cartProductsQuantity})` : title}
-          </Button>
+          <PurpleButton
+            buttonTitle={
+              title === "Cart" ? `${title} (${cartProductsQuantity})` : title
+            }
+          />
         </Link>
       ))}
-      <Button variant="outlined" onClick={handleLogOut}>
-        Log out
-      </Button>
+      <PurpleButton handleOnClick={handleLogOut} buttonTitle="Log out" />
     </Box>
   );
 };

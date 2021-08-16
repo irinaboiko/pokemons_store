@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import {
   ADD_TO_CART_REQUEST,
@@ -9,7 +9,9 @@ import {
 export default (initialValues) => {
   const dispatch = useDispatch();
 
-  //const [cartValues, setCartValues] = useState(initialValues);
+  const [cartValues, setCartValues] = useState(initialValues);
+
+  const isCartLoading = useSelector((state) => state.cart.isLoading);
 
   const handleAddToCart = useCallback(
     (cartInfo) => {
@@ -26,9 +28,10 @@ export default (initialValues) => {
   );
 
   return [
-    //cartValues,
-    //setCartValues,
+    cartValues,
+    setCartValues,
     handleAddToCart,
     handleRemoveFromCart,
+    isCartLoading,
   ];
 };

@@ -11,7 +11,13 @@ const ProductsPageContainer = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const [cartValues, setCartValues, handleAddToCart] = useCart();
+  const [
+    cartValues,
+    setCartValues,
+    handleAddToCart,
+    handleRemoveFromCart,
+    isCartLoading,
+  ] = useCart();
 
   const { productsList, currentPage, isLoading } = useSelector(
     (state) => state.products
@@ -45,6 +51,7 @@ const ProductsPageContainer = () => {
       handlePageChange={handlePageChange}
       currentPage={currentPage}
       handleAddToCart={handleAddToCart}
+      isCartLoading={isCartLoading}
     />
   );
 };

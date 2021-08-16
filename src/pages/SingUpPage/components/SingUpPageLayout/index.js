@@ -10,14 +10,14 @@ import {
 } from "@material-ui/core";
 
 import styles from "./styles";
-import OutlinedInput from "../../../../commonComponents/Inputs/OutlinedInput";
+import FilledInput from "../../../../commonComponents/Inputs/FilledInput";
 
 const SingUpPageLayout = ({ classes, singUpSata, handleChange }) => {
   return (
     <Box className={classes.wrapper}>
       <form>
         <Box className={classes.inputWrapper}>
-          <OutlinedInput
+          <FilledInput
             value={singUpSata.email}
             name="email"
             type="email"
@@ -26,7 +26,7 @@ const SingUpPageLayout = ({ classes, singUpSata, handleChange }) => {
           />
         </Box>
         <Box className={classes.inputWrapper}>
-          <OutlinedInput
+          <FilledInput
             value={singUpSata.firstName}
             name="firstName"
             type="text"
@@ -35,7 +35,7 @@ const SingUpPageLayout = ({ classes, singUpSata, handleChange }) => {
           />
         </Box>
         <Box className={classes.inputWrapper}>
-          <OutlinedInput
+          <FilledInput
             value={singUpSata.lastName}
             name="lastName"
             type="text"

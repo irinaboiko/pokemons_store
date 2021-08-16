@@ -16,6 +16,7 @@ const ProductsPageLayout = ({
   handlePageChange,
   currentPage,
   handleAddToCart,
+  isCartLoading,
 }) => {
   return (
     <Box>
@@ -36,7 +37,6 @@ const ProductsPageLayout = ({
                     productPrice={product.price}
                     actionText="Add to cart"
                     handleOnButtonClick={() => {
-                      //console.log(product);
                       handleAddToCart({
                         id: product.id,
                         name: product.name,
@@ -57,6 +57,7 @@ const ProductsPageLayout = ({
               onPageChange={handlePageChange}
             />
           </Box>
+          {isCartLoading && <DefaultBackdrop />}
         </>
       )}
     </Box>

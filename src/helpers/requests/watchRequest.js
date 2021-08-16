@@ -23,6 +23,7 @@ function* sendRequest(action) {
 
     yield put(NEW_SUCCESS_ACTION);
   } catch (error) {
+    console.log("watchRequest:", error);
     yield put(
       createActionWithPostfix(
         action,

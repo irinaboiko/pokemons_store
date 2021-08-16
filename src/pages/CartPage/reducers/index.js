@@ -3,7 +3,9 @@ import { handleActions } from "redux-actions";
 import * as actions from "../actions";
 
 const defaultState = {
-  cartInfo: {},
+  cartInfo: {
+    itemsList: [],
+  },
   isLoading: false,
   errors: null,
 };
@@ -39,6 +41,26 @@ const cartPageReducer = handleActions(
       };
     },
     [actions.ADD_TO_CART_FAIL]: (state, { payload }) => ({
+      isLoading: false,
+      errors: payload.response,
+    }),
+
+    [actions.INCREASE_ITEM_QUANTITY_REQUEST]: (state) => {
+      return {
+        ...state,
+        isLoading: true,
+      };
+    },
+    [actions.INCREASE_ITEM_QUANTITY_SUCCESS]: (state, { payload }) => {
+      console.log(payload.response);
+
+      return {
+        ...state,
+        isLoading: false,
+        cartInfo: payload.response,
+      };
+    },
+    [actions.INCREASE_ITEM_QUANTITY_FAIL]: (state, { payload }) => ({
       isLoading: false,
       errors: payload.response,
     }),

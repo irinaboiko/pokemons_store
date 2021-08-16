@@ -27,7 +27,6 @@ const SingUpPageContainer = () => {
   const handleSubmit = useCallback(
     (event) => {
       event.preventDefault();
-      //console.log(formValues);
     },
     [dispatch, formValues]
   );

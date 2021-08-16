@@ -1,11 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Box, Button, Typography, withStyles } from "@material-ui/core";
+import { Box, Typography, withStyles } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
 import styles from "./styles";
-import OutlinedInput from "../../../../commonComponents/Inputs/OutlinedInput";
+import FilledInput from "../../../../commonComponents/Inputs/FilledInput";
 import { ROUTES } from "../../../../routes/routesNames";
+import PurpleButton from "../../../../commonComponents/Buttons/PurpleButton";
+import PurpleOutlinedButton from "../../../../commonComponents/Buttons/PurpleOutlinedButton";
 
 const LoginPageLayout = ({
   classes,
@@ -21,7 +23,7 @@ const LoginPageLayout = ({
       </Typography>
       <form className={classes.form} action="" onSubmit={handleSubmit}>
         <Box className={classes.inputWrapper}>
-          <OutlinedInput
+          <FilledInput
             value={loginData.email}
             name="email"
             type="email"
@@ -30,7 +32,7 @@ const LoginPageLayout = ({
           />
         </Box>
         <Box className={classes.inputWrapper}>
-          <OutlinedInput
+          <FilledInput
             value={loginData.password}
             name="password"
             type="password"
@@ -39,9 +41,7 @@ const LoginPageLayout = ({
           />
         </Box>
         <Box className={classes.inputWrapper}>
-          <Button type="submit" variant="contained" color="primary">
-            LOG IN
-          </Button>
+          <PurpleButton type="submit" buttonTitle="LOG IN" />
         </Box>
         {errors && <div>{errors}</div>}
       </form>
@@ -51,9 +51,7 @@ const LoginPageLayout = ({
         </Typography>
         <Box className={classes.inputWrapper}>
           <Link to={ROUTES.SING_UP_PAGE}>
-            <Button variant="outlined" color="primary">
-              SIGN IN
-            </Button>
+            <PurpleOutlinedButton buttonTitle="SING UP" />
           </Link>
         </Box>
       </Box>
