@@ -1,19 +1,22 @@
 import React, { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { useCart } from "../../../hooks";
+import { useCart, useOrder } from "../../../hooks";
 import CartPageLayout from "../components/CartPageLayout";
 import {
   DECREASE_ITEM_QUANTITY_REQUEST,
   INCREASE_ITEM_QUANTITY_REQUEST,
   REMOVE_ITEM_FROM_CART_REQUEST,
 } from "../actions";
+import { CREATE_ORDER_REQUEST } from "../../AccountPage/actions";
 
 const CartPageContainer = () => {
   const dispatch = useDispatch();
 
   const { cartState, isLoading } = useSelector((state) => state.cart);
   const { itemsList } = cartState;
+
+  //const [handleCreateOrder] = useOrder();
 
   const handleIncrementItem = useCallback(
     (id) => {
@@ -52,8 +55,16 @@ const CartPageContainer = () => {
     [dispatch, itemsList]
   );
 
+  const requestBody = {
+    customerId: cartState.customerId,
+    totalPrice: cartState.totalPrice,
+    itemsList: cartState.itemsList,
+  };
+
   const handleCreateOrder = useCallback(() => {
-    console.log("create order");
+    //console.log(requestBody);
+    //console.log(cartState);
+    dispatch(CREATE_ORDER_REQUEST(requestBody));
   }, [dispatch, itemsList]);
 
   return (

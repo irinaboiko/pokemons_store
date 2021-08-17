@@ -7,9 +7,20 @@ import {
   launchSaga,
 } from "../pages/CartPage/sagas/cartPageWatcher";
 import { loginWatcher } from "../pages/LogInPage/sagas/loginWatcher";
+import {
+  launchOrdersSaga,
+  ordersWatcher,
+} from "../pages/AccountPage/sagas/ordersWatcher";
 
 function* rootSaga() {
-  yield all([apiCallsSaga(), cartWatcher(), launchSaga(), loginWatcher()]);
+  yield all([
+    apiCallsSaga(),
+    cartWatcher(),
+    launchSaga(),
+    loginWatcher(),
+    //launchOrdersSaga(),
+    //ordersWatcher(),
+  ]);
 }
 
 export default rootSaga;

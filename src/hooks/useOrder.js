@@ -8,9 +8,17 @@ export default () => {
 
   //const isCartLoading = useSelector((state) => state.cart.isLoading);
 
+  //const { cartState } = useSelector((state) => state.cart);
+
+  const requestBody = {
+    request: "body",
+  };
+
   const handleCreateOrder = useCallback(
-    (requestBody) => {
-      dispatch(ADD_TO_CART_REQUEST(requestBody));
+    (cartState) => {
+      console.log(requestBody);
+      console.log(cartState);
+      //dispatch(ADD_TO_CART_REQUEST(requestBody));
     },
     [dispatch]
   );

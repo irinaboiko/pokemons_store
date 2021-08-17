@@ -1,11 +1,6 @@
 import { handleActions } from "redux-actions";
 
 import * as actions from "../actions";
-import {
-  CREATE_ORDER_FAIL,
-  CREATE_ORDER_REQUEST,
-  CREATE_ORDER_SUCCESS,
-} from "../actions";
 
 const defaultState = {
   orders: [],

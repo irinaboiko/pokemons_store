@@ -1,11 +1,21 @@
-import React from "react";
-import AccountPageLayout from "../components/AccountPageLayout";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 
-const AccountPageContainer = () => {
-  const { userInfo } = useSelector((state) => state.auth);
+import AccountPageLayout from "../components/AccountPageLayout";
+import { GET_ORDERS_INFO_REQUEST } from "../actions";
 
-  return <AccountPageLayout userInfo={userInfo} />;
+const AccountPageContainer = () => {
+  const dispatch = useDispatch();
+
+  const { userInfo } = useSelector((state) => state.auth);
+  const { orders } = useSelector((state) => state.orders);
+
+  useEffect(() => {
+    dispatch(GET_ORDERS_INFO_REQUEST());
+  }, [dispatch]);
+
+  return <AccountPageLayout userInfo={userInfo} ordersList={orders} />;
 };
 
 export default AccountPageContainer;

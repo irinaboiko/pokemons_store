@@ -5,7 +5,7 @@ import { GET_CART_INFO_REQUEST, GET_CART_INFO_SUCCESS } from "../actions";
 
 const authSelector = (state) => state.auth;
 
-export function* launchSaga(action) {
+export function* launchSaga() {
   try {
     yield take(REHYDRATE);
     const { isAuth } = yield select(authSelector);
