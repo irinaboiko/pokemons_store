@@ -3,7 +3,7 @@ import { handleActions } from "redux-actions";
 import * as actions from "../actions";
 
 const defaultState = {
-  cartInfo: {
+  cartState: {
     itemsList: [],
   },
   isLoading: false,
@@ -20,7 +20,7 @@ const cartPageReducer = handleActions(
       return {
         ...state,
         isLoading: false,
-        cartInfo: payload.response,
+        cartState: payload.response,
       };
     },
     [actions.GET_CART_INFO_FAIL]: (state, { payload }) => ({
@@ -37,7 +37,7 @@ const cartPageReducer = handleActions(
       return {
         ...state,
         isLoading: false,
-        cartInfo: payload.response,
+        cartState: payload.response,
       };
     },
     [actions.ADD_TO_CART_FAIL]: (state, { payload }) => ({
@@ -52,15 +52,61 @@ const cartPageReducer = handleActions(
       };
     },
     [actions.INCREASE_ITEM_QUANTITY_SUCCESS]: (state, { payload }) => {
-      console.log(payload.response);
+      const { cartState, updatedItem } = payload.response;
+      const updatedItemIndex = state.cartState.itemsList.findIndex(
+        (item) => item.id === updatedItem.id
+      );
+      const clonedItemsList = [...state.cartState.itemsList];
+
+      clonedItemsList[updatedItemIndex] = updatedItem;
+
+      const updatedCartState = {
+        ...state.cartState,
+        quantity: cartState.quantity,
+        totalPrice: cartState.totalPrice,
+        itemsList: clonedItemsList,
+      };
 
       return {
         ...state,
         isLoading: false,
-        cartInfo: payload.response,
+        cartState: updatedCartState,
       };
     },
     [actions.INCREASE_ITEM_QUANTITY_FAIL]: (state, { payload }) => ({
+      isLoading: false,
+      errors: payload.response,
+    }),
+
+    [actions.DECREASE_ITEM_QUANTITY_REQUEST]: (state) => {
+      return {
+        ...state,
+        isLoading: true,
+      };
+    },
+    [actions.DECREASE_ITEM_QUANTITY_SUCCESS]: (state, { payload }) => {
+      const { cartState, updatedItem } = payload.response;
+      const updatedItemIndex = state.cartState.itemsList.findIndex(
+        (item) => item.id === updatedItem.id
+      );
+      const clonedItemsList = [...state.cartState.itemsList];
+
+      clonedItemsList[updatedItemIndex] = updatedItem;
+
+      const updatedCartState = {
+        ...state.cartState,
+        quantity: cartState.quantity,
+        totalPrice: cartState.totalPrice,
+        itemsList: clonedItemsList,
+      };
+
+      return {
+        ...state,
+        isLoading: false,
+        cartState: updatedCartState,
+      };
+    },
+    [actions.DECREASE_ITEM_QUANTITY_FAIL]: (state, { payload }) => ({
       isLoading: false,
       errors: payload.response,
     }),
@@ -70,10 +116,29 @@ const cartPageReducer = handleActions(
       isLoading: true,
     }),
     [actions.REMOVE_ITEM_FROM_CART_SUCCESS]: (state, { payload }) => {
-      console.log(payload);
+      const { cartState, removedItemId } = payload.response;
+      const removedItemIndex = state.cartState.itemsList.findIndex(
+        (item) => item.id === removedItemId
+      );
+
+      const copiedItemsList = [...state.cartState.itemsList];
+
+      const updatedItemsList = [
+        ...copiedItemsList.slice(0, removedItemIndex),
+        ...copiedItemsList.slice(removedItemIndex + 1),
+      ];
+
+      const updatedCartState = {
+        ...state.cartState,
+        quantity: cartState.quantity,
+        totalPrice: cartState.totalPrice,
+        itemsList: updatedItemsList,
+      };
 
       return {
         ...state,
+        isLoading: false,
+        cartState: updatedCartState,
       };
     },
     [actions.REMOVE_ITEM_FROM_CART_FAIL]: (state, { payload }) => ({

@@ -6,19 +6,18 @@ import PurpleButton from "../../../../commonComponents/Buttons/PurpleButton";
 import DefaultBackdrop from "../../../../commonComponents/Spinner/DefaultSpinner";
 
 import styles from "./styles";
+import CartTotalCard from "../../../../commonComponents/Cards/CartTotalCard";
 
 const CartPageLayout = ({
   classes,
-  handleIncrementItems,
-  handleRemoveFromCart,
+  handleIncrementItem,
+  handleDecrementItem,
+  handleRemoveItem,
+  handleCreateOrder,
   cartInfo,
   isLoading,
   itemsList,
 }) => {
-  //const cartItems = cartInfo.itemsList;
-
-  //console.log(cartItems);
-
   return (
     <>
       {isLoading ? (
@@ -34,15 +33,13 @@ const CartPageLayout = ({
                 <Card key={cartItem.id} className={classes.cartItem}>
                   <Box className={classes.itemInfo}>
                     <img src={cartItem.image} alt={cartItem.name} />
-                    <Typography variant="h5" className={classes.itemTitle}>
-                      {cartItem.name}
-                    </Typography>
+                    <Typography variant="h5">{cartItem.name}</Typography>
                   </Box>
                   <Box className={classes.itemButtons}>
                     <Box className={classes.quantityButtons}>
                       <PurpleButton
                         handleOnButtonClick={() => {
-                          console.log(index);
+                          handleDecrementItem(cartItem.id);
                         }}
                         buttonTitle="Minus"
                       />
@@ -51,32 +48,32 @@ const CartPageLayout = ({
                       </span>
                       <PurpleButton
                         handleOnButtonClick={() => {
-                          handleIncrementItems(cartItem.id);
+                          handleIncrementItem(cartItem.id);
                         }}
                         buttonTitle="Plus"
                       />
                     </Box>
                     <PurpleButton
                       handleOnButtonClick={() => {
-                        handleRemoveFromCart(cartItem.id);
+                        handleRemoveItem(cartItem.id);
                       }}
                       buttonTitle="Remove"
                     />
                   </Box>
                   <Box>
                     <Typography variant="h6" className={classes.itemPrice}>
-                      <p>{`$${cartItem.price}`}</p>
+                      <p>{`$${cartItem.quantity * cartItem.price}`}</p>
                     </Typography>
                   </Box>
                 </Card>
               );
             })}
           </Box>
-          <Box>
-            <Typography variant="h4" className={classes.totalPrice}>
-              Total: {cartInfo.totalPrice}
-            </Typography>
-          </Box>
+          <CartTotalCard
+            totalPrice={cartInfo.totalPrice}
+            handleOnButtonClick={handleCreateOrder}
+            buttonTitle="Create order"
+          />
         </Box>
       )}
     </>

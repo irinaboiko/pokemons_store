@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Box, withStyles } from "@material-ui/core";
 
 import DefaultBackdrop from "../../../../commonComponents/Spinner/DefaultSpinner";
-import ProductDetailsCard from "../../../../commonComponents/ProductCards/ProductDetailsCard";
+import ProductDetailsCard from "../../../../commonComponents/Cards/ProductDetailsCard";
 import BackButton from "../../../../commonComponents/Buttons/BackButton";
 
 import styles from "./styles";

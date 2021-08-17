@@ -7,6 +7,7 @@ import auth from "../pages/LogInPage/reducers";
 import products from "../pages/ProductsPage/reducers";
 import productDetails from "../pages/ProductDetailsPage/reducers";
 import cart from "../pages/CartPage/reducers";
+import orders from "../pages/AccountPage/reducers";
 
 const authBlackListedFields = createBlacklistFilter("auth", [
   "isLoading",
@@ -25,6 +26,7 @@ const rootReducer = combineReducers({
   products,
   productDetails,
   cart,
+  orders,
 });
 
 export default persistReducer(persistConfig, rootReducer);

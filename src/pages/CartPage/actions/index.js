@@ -8,10 +8,6 @@ export const ADD_TO_CART_REQUEST = createAction("ADD_TO_CART_REQUEST");
 export const ADD_TO_CART_SUCCESS = createAction("ADD_TO_CART_SUCCESS");
 export const ADD_TO_CART_FAIL = createAction("ADD_TO_CART_FAIL");
 
-/*export const EDIT_CART_REQUEST = createAction("EDIT_CART_REQUEST");
-export const EDIT_CART_SUCCESS = createAction("EDIT_CART_SUCCESS");
-export const EDIT_CART_FAIL = createAction("EDIT_CART_FAIL");*/
-
 export const INCREASE_ITEM_QUANTITY_REQUEST = createAction(
   "INCREASE_ITEM_QUANTITY_REQUEST"
 );
@@ -20,6 +16,16 @@ export const INCREASE_ITEM_QUANTITY_SUCCESS = createAction(
 );
 export const INCREASE_ITEM_QUANTITY_FAIL = createAction(
   "INCREASE_ITEM_QUANTITY_FAIL"
+);
+
+export const DECREASE_ITEM_QUANTITY_REQUEST = createAction(
+  "DECREASE_ITEM_QUANTITY_REQUEST"
+);
+export const DECREASE_ITEM_QUANTITY_SUCCESS = createAction(
+  "DECREASE_ITEM_QUANTITY_SUCCESS"
+);
+export const DECREASE_ITEM_QUANTITY_FAIL = createAction(
+  "DECREASE_ITEM_QUANTITY_FAIL"
 );
 
 export const REMOVE_ITEM_FROM_CART_REQUEST = createAction(

@@ -4,7 +4,7 @@ import { Box, withStyles } from "@material-ui/core";
 
 import DefaultBackdrop from "../../../../commonComponents/Spinner/DefaultSpinner";
 import DefaultPagination from "../../../../commonComponents/Pagination/DefaultPagination";
-import ProductCard from "../../../../commonComponents/ProductCards/ProductCard";
+import ProductCard from "../../../../commonComponents/Cards/ProductCard";
 
 import styles from "./styles";
 

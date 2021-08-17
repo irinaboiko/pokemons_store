@@ -10,13 +10,7 @@ const ProductDetailsPageContainer = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
 
-  const [
-    cartValues,
-    setCartValues,
-    handleAddToCart,
-    handleRemoveFromCart,
-    isCartLoading,
-  ] = useCart();
+  const [handleAddToCart, isCartLoading] = useCart();
 
   const { productInfo, isLoading } = useSelector(
     (state) => state.productDetails

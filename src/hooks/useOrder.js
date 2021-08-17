@@ -6,14 +6,17 @@ import { ADD_TO_CART_REQUEST } from "../pages/CartPage/actions";
 export default () => {
   const dispatch = useDispatch();
 
-  const isCartLoading = useSelector((state) => state.cart.isLoading);
+  //const isCartLoading = useSelector((state) => state.cart.isLoading);
 
-  const handleAddToCart = useCallback(
-    (cartInfo) => {
-      dispatch(ADD_TO_CART_REQUEST(cartInfo));
+  const handleCreateOrder = useCallback(
+    (requestBody) => {
+      dispatch(ADD_TO_CART_REQUEST(requestBody));
     },
     [dispatch]
   );
 
-  return [handleAddToCart, isCartLoading];
+  return [
+    handleCreateOrder,
+    //isCartLoading
+  ];
 };

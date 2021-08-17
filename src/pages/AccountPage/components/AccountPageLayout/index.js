@@ -1,16 +1,23 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Box, Typography } from "@material-ui/core";
+
+import UserCard from "../../../../commonComponents/Cards/UserCard";
 
 const AccountPageLayout = ({ userInfo }) => {
+  const { firstName, lastName, gender, email, phone, address } = userInfo;
+  const { addressLine1, city, country } = address;
+
   return (
-    <Box>
-      <Typography variant="h2">{`${userInfo.firstName} ${userInfo.lastName}`}</Typography>
-      <Typography variant="body1">{`Gender: ${userInfo.gender}`}</Typography>
-      <Typography variant="body1">{`Email: ${userInfo.email}`}</Typography>
-      <Typography variant="body1">{`Phone number: ${userInfo.phone}`}</Typography>
-      <Typography variant="body1">{`Address: ${userInfo.address.addressLine1}, ${userInfo.address.city}, ${userInfo.address.country}`}</Typography>
-    </Box>
+    <UserCard
+      firstName={firstName}
+      lastName={lastName}
+      gender={gender}
+      email={email}
+      phone={phone}
+      addressLine1={addressLine1}
+      city={city}
+      country={country}
+    />
   );
 };
 

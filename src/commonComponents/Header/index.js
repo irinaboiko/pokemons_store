@@ -12,7 +12,7 @@ const Header = ({ classes }) => {
   const history = useHistory();
 
   let cartProductsQuantity = useSelector(
-    (state) => state.cart.cartInfo.quantity
+    (state) => state.cart.cartState.quantity
   );
 
   if (!cartProductsQuantity) {

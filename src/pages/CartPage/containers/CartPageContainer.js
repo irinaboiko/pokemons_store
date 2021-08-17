@@ -3,34 +3,25 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { useCart } from "../../../hooks";
 import CartPageLayout from "../components/CartPageLayout";
-import { INCREASE_ITEM_QUANTITY_REQUEST } from "../actions";
+import {
+  DECREASE_ITEM_QUANTITY_REQUEST,
+  INCREASE_ITEM_QUANTITY_REQUEST,
+  REMOVE_ITEM_FROM_CART_REQUEST,
+} from "../actions";
 
 const CartPageContainer = () => {
   const dispatch = useDispatch();
 
-  const [
-    cartValues,
-    setCartValues,
-    handleAddToCart,
-    handleRemoveFromCart,
-    isCartLoading,
-  ] = useCart();
+  const { cartState, isLoading } = useSelector((state) => state.cart);
+  const { itemsList } = cartState;
 
-  const { cartInfo, isLoading } = useSelector((state) => state.cart);
-  const { itemsList } = cartInfo;
-
-  console.log(itemsList);
-
-  const handleIncrementItems = useCallback(
+  const handleIncrementItem = useCallback(
     (id) => {
-      console.log(id);
-      const elem = itemsList.find((item) => item.id === id);
-
-      console.log(elem);
+      const cartItem = itemsList.find((item) => item.id === id);
 
       const requestBody = {
-        id: elem.id,
-        quantity: elem.quantity + 1,
+        id: cartItem.id,
+        quantity: cartItem.quantity + 1,
       };
 
       dispatch(INCREASE_ITEM_QUANTITY_REQUEST(requestBody));
@@ -38,11 +29,40 @@ const CartPageContainer = () => {
     [dispatch, itemsList]
   );
 
+  const handleDecrementItem = useCallback(
+    (id) => {
+      const cartItem = itemsList.find((item) => item.id === id);
+
+      if (cartItem.quantity > 1) {
+        const requestBody = {
+          id: cartItem.id,
+          quantity: cartItem.quantity - 1,
+        };
+
+        dispatch(DECREASE_ITEM_QUANTITY_REQUEST(requestBody));
+      }
+    },
+    [dispatch, itemsList]
+  );
+
+  const handleRemoveItem = useCallback(
+    (id) => {
+      dispatch(REMOVE_ITEM_FROM_CART_REQUEST(id));
+    },
+    [dispatch, itemsList]
+  );
+
+  const handleCreateOrder = useCallback(() => {
+    console.log("create order");
+  }, [dispatch, itemsList]);
+
   return (
     <CartPageLayout
-      handleIncrementItems={handleIncrementItems}
-      handleRemoveFromCart={handleRemoveFromCart}
-      cartInfo={cartInfo}
+      handleIncrementItem={handleIncrementItem}
+      handleDecrementItem={handleDecrementItem}
+      handleRemoveItem={handleRemoveItem}
+      handleCreateOrder={handleCreateOrder}
+      cartInfo={cartState}
       isLoading={isLoading}
       itemsList={itemsList}
     />

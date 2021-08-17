@@ -11,10 +11,6 @@ const styles = () => ({
     alignItems: "flex-start",
   },
 
-  itemTitle: {
-    //color: "#512da8",
-  },
-
   itemButtons: {
     display: "flex",
     flexDirection: "column",
@@ -26,13 +22,11 @@ const styles = () => ({
   },
 
   itemQuantity: {
-    //color: "#512da8",
     fontWeight: "bold",
     margin: "0 10px",
   },
 
   itemPrice: {
-    //color: "#512da8",
     fontWeight: "bold",
     textAlign: "right",
   },
