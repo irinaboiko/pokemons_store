@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Box, Card, Modal, Typography, withStyles } from "@material-ui/core";
+import { Box, Card, Typography, withStyles } from "@material-ui/core";
 
 import PurpleButton from "../../../../commonComponents/Buttons/PurpleButton";
 import DefaultBackdrop from "../../../../commonComponents/Spinner/DefaultSpinner";
@@ -95,7 +95,7 @@ CartPageLayout.propTypes = {
   handleDecrementItem: PropTypes.func.isRequired,
   handleRemoveItem: PropTypes.func.isRequired,
   handleCreateOrder: PropTypes.func.isRequired,
-  cartInfo: PropTypes.array.isRequired,
+  cartInfo: PropTypes.object.isRequired,
   isLoading: PropTypes.bool.isRequired,
   isShowModal: PropTypes.bool.isRequired,
   handleCloseModal: PropTypes.func.isRequired,

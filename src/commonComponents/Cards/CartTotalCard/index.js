@@ -28,7 +28,7 @@ const CartTotalCard = ({
 };
 
 CartTotalCard.propTypes = {
-  totalPrice: PropTypes.string.isRequired,
+  totalPrice: PropTypes.number.isRequired,
   handleOnButtonClick: PropTypes.func,
   buttonTitle: PropTypes.string.isRequired,
 };

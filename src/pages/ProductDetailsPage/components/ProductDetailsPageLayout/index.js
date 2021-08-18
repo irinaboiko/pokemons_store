@@ -57,7 +57,7 @@ const ProductDetailsPageLayout = ({
 };
 
 ProductDetailsPageLayout.propTypes = {
-  productInfo: PropTypes.array.isRequired,
+  productInfo: PropTypes.object.isRequired,
   isLoading: PropTypes.bool.isRequired,
   handleAddToCart: PropTypes.func.isRequired,
   isCartLoading: PropTypes.bool.isRequired,

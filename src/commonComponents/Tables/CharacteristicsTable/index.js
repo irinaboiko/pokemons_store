@@ -20,7 +20,6 @@ const TableCharacteristics = ({
   rowTitle,
   rowInfo,
 }) => {
-  console.log(characteristics);
   return (
     <Box className={classes.tableWrapper}>
       <Typography variant="h5" className={classes.tableCapture}>

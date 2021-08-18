@@ -62,10 +62,10 @@ const ProductDetailsCard = ({
 };
 
 ProductDetailsCard.propTypes = {
-  productName: PropTypes.string.isRequired,
-  productId: PropTypes.string.isRequired,
-  productImage: PropTypes.string.isRequired,
-  productPrice: PropTypes.number.isRequired,
+  productName: PropTypes.string,
+  productId: PropTypes.number,
+  productImage: PropTypes.string,
+  productPrice: PropTypes.number,
   actionText: PropTypes.string.isRequired,
   actionDisabledText: PropTypes.string,
   isButtonDisabled: PropTypes.bool,
