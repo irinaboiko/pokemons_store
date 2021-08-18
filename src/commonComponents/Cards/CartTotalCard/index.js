@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Box, Card, Typography, withStyles } from "@material-ui/core";
 
 import PurpleButton from "../../Buttons/PurpleButton";
@@ -24,6 +25,12 @@ const CartTotalCard = ({
       </Box>
     </Card>
   );
+};
+
+CartTotalCard.propTypes = {
+  totalPrice: PropTypes.string.isRequired,
+  handleOnButtonClick: PropTypes.func,
+  buttonTitle: PropTypes.string.isRequired,
 };
 
 export default React.memo(withStyles(styles)(CartTotalCard));

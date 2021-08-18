@@ -12,7 +12,7 @@ const Header = ({ classes }) => {
   const history = useHistory();
 
   let cartProductsQuantity = useSelector(
-    (state) => state.cart.cartState.quantity
+    (state) => state.cartPage.cartState.quantity
   );
 
   if (!cartProductsQuantity) {
@@ -35,7 +35,7 @@ const Header = ({ classes }) => {
           />
         </Link>
       ))}
-      <PurpleButton handleOnClick={handleLogOut} buttonTitle="Log out" />
+      <PurpleButton handleOnButtonClick={handleLogOut} buttonTitle="Log out" />
     </Box>
   );
 };

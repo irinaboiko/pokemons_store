@@ -6,7 +6,7 @@ import { ADD_TO_CART_REQUEST } from "../pages/CartPage/actions";
 export default () => {
   const dispatch = useDispatch();
 
-  const isCartLoading = useSelector((state) => state.cart.isLoading);
+  const isCartLoading = useSelector((state) => state.cartPage.isLoading);
 
   const handleAddToCart = useCallback(
     (cartInfo) => {

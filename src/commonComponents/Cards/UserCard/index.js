@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Card, Typography, withStyles } from "@material-ui/core";
 
 import styles from "./styles";
@@ -20,9 +21,22 @@ const UserCard = ({
       <Typography variant="body1">{`Gender: ${gender}`}</Typography>
       <Typography variant="body1">{`Email: ${email}`}</Typography>
       <Typography variant="body1">{`Phone number: ${phone}`}</Typography>
-      <Typography variant="body1">{`Address: ${addressLine1}, ${city}, ${country}`}</Typography>
+      <Typography variant="body1">{`Address: ${
+        addressLine1 ? addressLine1 : "-"
+      }, ${city ? city : "-"}, ${country ? country : "-"}`}</Typography>
     </Card>
   );
+};
+
+UserCard.propTypes = {
+  firstName: PropTypes.string.isRequired,
+  lastName: PropTypes.string.isRequired,
+  gender: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  phone: PropTypes.string.isRequired,
+  addressLine1: PropTypes.string,
+  city: PropTypes.string,
+  country: PropTypes.string,
 };
 
 export default React.memo(withStyles(styles)(UserCard));

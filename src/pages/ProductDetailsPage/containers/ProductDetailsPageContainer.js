@@ -13,8 +13,10 @@ const ProductDetailsPageContainer = () => {
   const [handleAddToCart, isCartLoading] = useCart();
 
   const { productInfo, isLoading } = useSelector(
-    (state) => state.productDetails
+    (state) => state.productDetailsPage
   );
+  const { cartState } = useSelector((state) => state.cartPage);
+  const cartItemsList = cartState.itemsList;
 
   useEffect(() => {
     dispatch(GET_PRODUCT_DETAILS_REQUEST(id));
@@ -26,6 +28,7 @@ const ProductDetailsPageContainer = () => {
       isLoading={isLoading}
       handleAddToCart={handleAddToCart}
       isCartLoading={isCartLoading}
+      cartItemsList={cartItemsList}
     />
   );
 };

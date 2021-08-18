@@ -25,7 +25,7 @@ const styles = () => ({
       marginBottom: 0,
     },
   },
-  signInWrapper: {
+  signUpWrapper: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -34,6 +34,9 @@ const styles = () => ({
   text: {
     textAlign: "center",
     marginBottom: 10,
+  },
+  errorsWrapper: {
+    color: "red",
   },
 });
 

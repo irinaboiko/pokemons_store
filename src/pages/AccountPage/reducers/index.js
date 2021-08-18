@@ -8,15 +8,13 @@ const defaultState = {
   error: null,
 };
 
-const ordersReducer = handleActions(
+const accountPage = handleActions(
   {
     [actions.GET_ORDERS_INFO_REQUEST]: (state) => ({
       ...state,
       isLoading: true,
     }),
     [actions.GET_ORDERS_INFO_SUCCESS]: (state, { payload }) => {
-      console.log(payload.response);
-
       return {
         ...state,
         isLoading: false,
@@ -28,26 +26,8 @@ const ordersReducer = handleActions(
       isLoading: false,
       errors: payload.errors,
     }),
-
-    [actions.CREATE_ORDER_REQUEST]: (state) => ({
-      ...state,
-      isLoading: true,
-    }),
-    [actions.CREATE_ORDER_SUCCESS]: (state, { payload }) => {
-      console.log(payload.response);
-
-      return {
-        ...state,
-        isLoading: false,
-      };
-    },
-    [actions.CREATE_ORDER_FAIL]: (state, { payload }) => ({
-      ...state,
-      isLoading: false,
-      errors: payload.errors,
-    }),
   },
   defaultState
 );
 
-export default ordersReducer;
+export default accountPage;

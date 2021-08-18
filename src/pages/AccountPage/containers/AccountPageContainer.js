@@ -9,7 +9,7 @@ const AccountPageContainer = () => {
   const dispatch = useDispatch();
 
   const { userInfo } = useSelector((state) => state.auth);
-  const { orders } = useSelector((state) => state.orders);
+  const { orders } = useSelector((state) => state.accountPage);
 
   useEffect(() => {
     dispatch(GET_ORDERS_INFO_REQUEST());

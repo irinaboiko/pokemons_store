@@ -1,9 +1,9 @@
 import React, { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { useCart, useOrder } from "../../../hooks";
 import CartPageLayout from "../components/CartPageLayout";
 import {
+  CLOSE_MODAL,
   DECREASE_ITEM_QUANTITY_REQUEST,
   INCREASE_ITEM_QUANTITY_REQUEST,
   REMOVE_ITEM_FROM_CART_REQUEST,
@@ -13,10 +13,10 @@ import { CREATE_ORDER_REQUEST } from "../../AccountPage/actions";
 const CartPageContainer = () => {
   const dispatch = useDispatch();
 
-  const { cartState, isLoading } = useSelector((state) => state.cart);
+  const { cartState, isLoading, isShowModal } = useSelector(
+    (state) => state.cartPage
+  );
   const { itemsList } = cartState;
-
-  //const [handleCreateOrder] = useOrder();
 
   const handleIncrementItem = useCallback(
     (id) => {
@@ -62,10 +62,12 @@ const CartPageContainer = () => {
   };
 
   const handleCreateOrder = useCallback(() => {
-    //console.log(requestBody);
-    //console.log(cartState);
     dispatch(CREATE_ORDER_REQUEST(requestBody));
   }, [dispatch, itemsList]);
+
+  const handleCloseModal = useCallback(() => {
+    dispatch(CLOSE_MODAL());
+  }, [dispatch]);
 
   return (
     <CartPageLayout
@@ -75,6 +77,8 @@ const CartPageContainer = () => {
       handleCreateOrder={handleCreateOrder}
       cartInfo={cartState}
       isLoading={isLoading}
+      isShowModal={isShowModal}
+      handleCloseModal={handleCloseModal}
       itemsList={itemsList}
     />
   );

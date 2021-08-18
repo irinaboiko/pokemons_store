@@ -32,11 +32,18 @@ const LoginPageContainer = () => {
     }
   }, [isAuth]);
 
+  useEffect(() => {
+    if (errors) {
+      handleReset();
+    }
+  }, [errors]);
+
   return (
     <LoginPageLayout
       loginData={formValues}
       handleChange={handleChange}
       handleSubmit={handleSubmit}
+      isLoading={isLoading}
       errors={errors}
     />
   );

@@ -14,6 +14,7 @@ const ProductDetailsPageLayout = ({
   isLoading,
   handleAddToCart,
   isCartLoading,
+  cartItemsList,
 }) => {
   const cartInfo = {
     id: productInfo.id,
@@ -22,6 +23,10 @@ const ProductDetailsPageLayout = ({
     quantity: 1,
     price: productInfo.price,
   };
+
+  const isButtonDisabled = !!cartItemsList.find(
+    (cartItem) => cartItem.id === productInfo.id
+  );
 
   return (
     <Box>
@@ -36,6 +41,8 @@ const ProductDetailsPageLayout = ({
             productImage={productInfo.image}
             productPrice={productInfo.price}
             actionText="Add to cart"
+            actionDisabledText="Already in cart"
+            isButtonDisabled={isButtonDisabled}
             handleOnButtonClick={() => {
               handleAddToCart(cartInfo);
             }}
@@ -49,6 +56,12 @@ const ProductDetailsPageLayout = ({
   );
 };
 
-ProductDetailsPageLayout.propTypes = {};
+ProductDetailsPageLayout.propTypes = {
+  productInfo: PropTypes.array.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  handleAddToCart: PropTypes.func.isRequired,
+  isCartLoading: PropTypes.bool.isRequired,
+  cartItemsList: PropTypes.array.isRequired,
+};
 
 export default React.memo(withStyles(styles)(ProductDetailsPageLayout));

@@ -4,10 +4,11 @@ import { createBlacklistFilter } from "redux-persist-transform-filter";
 import storage from "redux-persist/lib/storage";
 
 import auth from "../pages/LogInPage/reducers";
-import products from "../pages/ProductsPage/reducers";
-import productDetails from "../pages/ProductDetailsPage/reducers";
-import cart from "../pages/CartPage/reducers";
-import orders from "../pages/AccountPage/reducers";
+import productsPage from "../pages/ProductsPage/reducers";
+import productDetailsPage from "../pages/ProductDetailsPage/reducers";
+import cartPage from "../pages/CartPage/reducers";
+import accountPage from "../pages/AccountPage/reducers";
+import signUpPage from "../pages/SingUpPage/reducers";
 
 const authBlackListedFields = createBlacklistFilter("auth", [
   "isLoading",
@@ -23,10 +24,11 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   auth,
-  products,
-  productDetails,
-  cart,
-  orders,
+  signUpPage,
+  productsPage,
+  productDetailsPage,
+  cartPage,
+  accountPage,
 });
 
 export default persistReducer(persistConfig, rootReducer);

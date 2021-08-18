@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {
   Box,
   Card,
@@ -20,6 +21,8 @@ const ProductDetailsCard = ({
   productImage,
   productPrice,
   actionText,
+  actionDisabledText,
+  isButtonDisabled,
   handleOnButtonClick,
   abilities,
   stats,
@@ -35,6 +38,8 @@ const ProductDetailsCard = ({
           <PurpleButton
             handleOnButtonClick={handleOnButtonClick}
             buttonTitle={actionText}
+            disabledButtonTitle={actionDisabledText}
+            isButtonDisabled={isButtonDisabled}
           />
         </CardActions>
         <Box>
@@ -54,6 +59,19 @@ const ProductDetailsCard = ({
       </CardContent>
     </Card>
   );
+};
+
+ProductDetailsCard.propTypes = {
+  productName: PropTypes.string.isRequired,
+  productId: PropTypes.string.isRequired,
+  productImage: PropTypes.string.isRequired,
+  productPrice: PropTypes.number.isRequired,
+  actionText: PropTypes.string.isRequired,
+  actionDisabledText: PropTypes.string,
+  isButtonDisabled: PropTypes.bool,
+  handleOnButtonClick: PropTypes.func,
+  abilities: PropTypes.array,
+  stats: PropTypes.array,
 };
 
 export default React.memo(withStyles(styles)(ProductDetailsCard));

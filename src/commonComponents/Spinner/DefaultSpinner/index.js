@@ -1,5 +1,6 @@
-import { Backdrop, CircularProgress } from "@material-ui/core";
 import React from "react";
+import PropTypes from "prop-types";
+import { Backdrop, CircularProgress } from "@material-ui/core";
 
 const DefaultBackdrop = (isOpen) => {
   return (
@@ -7,6 +8,10 @@ const DefaultBackdrop = (isOpen) => {
       <CircularProgress color="inherit" />
     </Backdrop>
   );
+};
+
+DefaultBackdrop.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
 };
 
 export default DefaultBackdrop;

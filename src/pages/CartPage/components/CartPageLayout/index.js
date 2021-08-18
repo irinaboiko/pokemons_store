@@ -1,12 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Box, Card, Typography, withStyles } from "@material-ui/core";
+import { Box, Card, Modal, Typography, withStyles } from "@material-ui/core";
 
 import PurpleButton from "../../../../commonComponents/Buttons/PurpleButton";
 import DefaultBackdrop from "../../../../commonComponents/Spinner/DefaultSpinner";
 
 import styles from "./styles";
 import CartTotalCard from "../../../../commonComponents/Cards/CartTotalCard";
+import OrderSuccessModal from "../../../../commonComponents/Modals/OrderSuccessModal";
 
 const CartPageLayout = ({
   classes,
@@ -16,6 +17,8 @@ const CartPageLayout = ({
   handleCreateOrder,
   cartInfo,
   isLoading,
+  isShowModal,
+  handleCloseModal,
   itemsList,
 }) => {
   return (
@@ -28,7 +31,7 @@ const CartPageLayout = ({
             Cart
           </Typography>
           <Box>
-            {itemsList?.map((cartItem, index) => {
+            {itemsList?.map((cartItem) => {
               return (
                 <Card key={cartItem.id} className={classes.cartItem}>
                   <Box className={classes.itemInfo}>
@@ -62,24 +65,41 @@ const CartPageLayout = ({
                   </Box>
                   <Box>
                     <Typography variant="h6" className={classes.itemPrice}>
-                      <p>{`$${cartItem.quantity * cartItem.price}`}</p>
+                      {`$${cartItem.quantity * cartItem.price}`}
                     </Typography>
                   </Box>
                 </Card>
               );
             })}
           </Box>
-          <CartTotalCard
-            totalPrice={cartInfo.totalPrice}
-            handleOnButtonClick={handleCreateOrder}
-            buttonTitle="Create order"
-          />
+          {itemsList.length < 1 ? (
+            <Card className={classes.cartEmpty}>
+              <Typography variant="h6">Cart is empty</Typography>
+            </Card>
+          ) : (
+            <CartTotalCard
+              totalPrice={cartInfo.totalPrice}
+              handleOnButtonClick={handleCreateOrder}
+              buttonTitle="Create order"
+            />
+          )}
+          <OrderSuccessModal open={isShowModal} onClose={handleCloseModal} />
         </Box>
       )}
     </>
   );
 };
 
-CartPageLayout.propTypes = {};
+CartPageLayout.propTypes = {
+  handleIncrementItem: PropTypes.func.isRequired,
+  handleDecrementItem: PropTypes.func.isRequired,
+  handleRemoveItem: PropTypes.func.isRequired,
+  handleCreateOrder: PropTypes.func.isRequired,
+  cartInfo: PropTypes.array.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  isShowModal: PropTypes.bool.isRequired,
+  handleCloseModal: PropTypes.func.isRequired,
+  itemsList: PropTypes.array.isRequired,
+};
 
 export default React.memo(withStyles(styles)(CartPageLayout));

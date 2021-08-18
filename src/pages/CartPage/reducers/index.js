@@ -1,12 +1,14 @@
 import { handleActions } from "redux-actions";
 
 import * as actions from "../actions";
+import * as orderActions from "../../AccountPage/actions";
 
 const defaultState = {
   cartState: {
     itemsList: [],
   },
   isLoading: false,
+  isShowModal: false,
   errors: null,
 };
 
@@ -144,6 +146,29 @@ const cartPageReducer = handleActions(
     [actions.REMOVE_ITEM_FROM_CART_FAIL]: (state, { payload }) => ({
       isLoading: false,
       errors: payload.response,
+    }),
+
+    [actions.CLOSE_MODAL]: (state) => ({
+      ...state,
+      isShowModal: false,
+    }),
+
+    [orderActions.CREATE_ORDER_REQUEST]: (state) => ({
+      ...state,
+      isLoading: true,
+    }),
+    [orderActions.CREATE_ORDER_SUCCESS]: (state) => {
+      return {
+        ...state,
+        isLoading: false,
+        isShowModal: true,
+        cartState: defaultState.cartState,
+      };
+    },
+    [orderActions.CREATE_ORDER_FAIL]: (state, { payload }) => ({
+      ...state,
+      isLoading: false,
+      errors: payload.errors,
     }),
   },
   defaultState

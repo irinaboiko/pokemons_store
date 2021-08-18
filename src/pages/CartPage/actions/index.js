@@ -37,3 +37,5 @@ export const REMOVE_ITEM_FROM_CART_SUCCESS = createAction(
 export const REMOVE_ITEM_FROM_CART_FAIL = createAction(
   "REMOVE_ITEM_FROM_CART_FAIL"
 );
+
+export const CLOSE_MODAL = createAction("CLOSE_MODAL");

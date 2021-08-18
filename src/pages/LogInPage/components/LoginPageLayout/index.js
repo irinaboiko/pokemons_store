@@ -3,11 +3,12 @@ import PropTypes from "prop-types";
 import { Box, Typography, withStyles } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
-import styles from "./styles";
 import FilledInput from "../../../../commonComponents/Inputs/FilledInput";
 import { ROUTES } from "../../../../routes/routesNames";
 import PurpleButton from "../../../../commonComponents/Buttons/PurpleButton";
 import PurpleOutlinedButton from "../../../../commonComponents/Buttons/PurpleOutlinedButton";
+
+import styles from "./styles";
 
 const LoginPageLayout = ({
   classes,
@@ -21,7 +22,12 @@ const LoginPageLayout = ({
       <Typography className={classes.text} variant="h5">
         Please login to your account to continue
       </Typography>
-      <form className={classes.form} action="" onSubmit={handleSubmit}>
+      <form
+        className={classes.form}
+        action=""
+        onSubmit={handleSubmit}
+        novalidate
+      >
         <Box className={classes.inputWrapper}>
           <FilledInput
             value={loginData.email}
@@ -43,9 +49,9 @@ const LoginPageLayout = ({
         <Box className={classes.inputWrapper}>
           <PurpleButton type="submit" buttonTitle="LOG IN" />
         </Box>
-        {errors && <div>{errors}</div>}
+        {errors && <Box className={classes.errorsWrapper}>{errors}</Box>}
       </form>
-      <Box className={classes.signInWrapper}>
+      <Box className={classes.signUpWrapper}>
         <Typography className={classes.text} variant="body2">
           Don't have an account?
         </Typography>
@@ -59,6 +65,13 @@ const LoginPageLayout = ({
   );
 };
 
-LoginPageLayout.propTypes = {};
+LoginPageLayout.propTypes = {
+  loginData: PropTypes.shape({
+    email: PropTypes.string.isRequired,
+    password: PropTypes.string.isRequired,
+  }),
+  handleChange: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+};
 
 export default withStyles(styles)(LoginPageLayout);

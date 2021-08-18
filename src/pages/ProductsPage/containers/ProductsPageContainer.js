@@ -14,8 +14,10 @@ const ProductsPageContainer = () => {
   const [handleAddToCart, isCartLoading] = useCart();
 
   const { productsList, currentPage, isLoading } = useSelector(
-    (state) => state.products
+    (state) => state.productsPage
   );
+  const { cartState } = useSelector((state) => state.cartPage);
+  const cartItemsList = cartState.itemsList;
 
   const handleGoTOProductDetails = useCallback(
     (id) => {
@@ -46,6 +48,7 @@ const ProductsPageContainer = () => {
       currentPage={currentPage}
       handleAddToCart={handleAddToCart}
       isCartLoading={isCartLoading}
+      cartItemsList={cartItemsList}
     />
   );
 };

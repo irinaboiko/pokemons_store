@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Pagination } from "@material-ui/lab";
 import { withStyles } from "@material-ui/core";
 
@@ -22,6 +23,12 @@ const DefaultPagination = ({
       color="primary"
     />
   );
+};
+
+DefaultPagination.propTypes = {
+  pageCount: PropTypes.number.isRequired,
+  onPageChange: PropTypes.func.isRequired,
+  currentPage: PropTypes.number.isRequired,
 };
 
 export default React.memo(withStyles(styles)(DefaultPagination));

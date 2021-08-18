@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {
   Box,
   Paper,
@@ -19,6 +20,7 @@ const TableCharacteristics = ({
   rowTitle,
   rowInfo,
 }) => {
+  console.log(characteristics);
   return (
     <Box className={classes.tableWrapper}>
       <Typography variant="h5" className={classes.tableCapture}>
@@ -40,6 +42,13 @@ const TableCharacteristics = ({
       </TableContainer>
     </Box>
   );
+};
+
+TableCharacteristics.propTypes = {
+  tableTitle: PropTypes.string.isRequired,
+  characteristics: PropTypes.array,
+  rowTitle: PropTypes.string,
+  rowInfo: PropTypes.string,
 };
 
 export default React.memo(withStyles(styles)(TableCharacteristics));
