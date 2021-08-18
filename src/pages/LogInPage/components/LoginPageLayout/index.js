@@ -22,12 +22,7 @@ const LoginPageLayout = ({
       <Typography className={classes.text} variant="h5">
         Please login to your account to continue
       </Typography>
-      <form
-        className={classes.form}
-        action=""
-        onSubmit={handleSubmit}
-        novalidate
-      >
+      <form className={classes.form} action="" onSubmit={handleSubmit}>
         <Box className={classes.inputWrapper}>
           <FilledInput
             value={loginData.email}
