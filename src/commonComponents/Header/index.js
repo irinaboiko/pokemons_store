@@ -1,5 +1,5 @@
 import React, { useCallback } from "react";
-import { Box, Button, withStyles } from "@material-ui/core";
+import { Badge, Box, withStyles } from "@material-ui/core";
 
 import navItems from "./config/navItems";
 import { Link, useHistory } from "react-router-dom";
@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 
 import styles from "./styles";
 import PurpleButton from "../Buttons/PurpleButton";
+import { ShoppingCart } from "@material-ui/icons";
 
 const Header = ({ classes }) => {
   const history = useHistory();
@@ -30,7 +31,17 @@ const Header = ({ classes }) => {
         <Link to={path} key={path}>
           <PurpleButton
             buttonTitle={
-              title === "Cart" ? `${title} (${cartProductsQuantity})` : title
+              title === "Cart" ? (
+                <Badge
+                  badgeContent={cartProductsQuantity}
+                  color="error"
+                  showZero
+                >
+                  <ShoppingCart />
+                </Badge>
+              ) : (
+                title
+              )
             }
           />
         </Link>

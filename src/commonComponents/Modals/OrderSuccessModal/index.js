@@ -13,7 +13,7 @@ const OrderSuccessModal = ({ classes, open, onClose }) => {
       aria-describedby="simple-modal-description"
     >
       <Typography variant="h6" className={classes.modalBody}>
-        Pokemons in pokeballs! Thanks for choosing us!
+        Pokemons are in pokeballs! Thanks for choosing us!
       </Typography>
     </Modal>
   );
