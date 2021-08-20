@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import PropTypes from "prop-types";
 import { Box, withStyles } from "@material-ui/core";
 
@@ -24,9 +24,9 @@ const ProductDetailsPageLayout = ({
     price: productInfo.price,
   };
 
-  const isButtonDisabled = !!cartItemsList.find(
-    (cartItem) => cartItem.id === productInfo.id
-  );
+  const isButtonDisabled = useMemo(() => {
+    return !!cartItemsList.find((cartItem) => cartItem.id === productInfo.id);
+  }, [cartItemsList]);
 
   return (
     <Box>

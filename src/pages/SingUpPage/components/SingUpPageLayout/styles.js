@@ -14,13 +14,15 @@ const styles = () => ({
   inputWrapper: {
     width: "100%",
     backgroundColor: "#fafafa",
-    marginBottom: 20,
+    position: "relative",
+    marginBottom: 25,
   },
   selectWrapper: {
     width: "100%",
     backgroundColor: "#fafafa",
+    position: "relative",
     padding: "5px 20px",
-    marginBottom: 20,
+    marginBottom: 25,
   },
   select: {
     width: "100%",
@@ -39,9 +41,17 @@ const styles = () => ({
   },
   buttonWrapper: {
     textAlign: "center",
+    marginTop: 40,
   },
   errorsWrapper: {
     color: "red",
+  },
+  errorMessage: {
+    color: "red",
+    fontSize: 11,
+    position: "absolute",
+    left: 0,
+    marginTop: 5,
   },
 });
 

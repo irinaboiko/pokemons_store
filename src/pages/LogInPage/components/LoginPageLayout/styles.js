@@ -19,7 +19,8 @@ const styles = () => ({
     marginBottom: 30,
   },
   inputWrapper: {
-    marginBottom: 20,
+    position: "relative",
+    marginBottom: 25,
 
     "&:Last-of-type": {
       marginBottom: 0,
@@ -37,6 +38,12 @@ const styles = () => ({
   },
   errorsWrapper: {
     color: "red",
+  },
+  errorMessage: {
+    color: "red",
+    fontSize: 11,
+    position: "absolute",
+    marginTop: 5,
   },
 });
 

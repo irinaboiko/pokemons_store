@@ -14,4 +14,4 @@ DefaultBackdrop.propTypes = {
   isOpen: PropTypes.bool,
 };
 
-export default DefaultBackdrop;
+export default React.memo(DefaultBackdrop);

@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import CartPageLayout from "../components/CartPageLayout";
@@ -55,11 +55,13 @@ const CartPageContainer = () => {
     [dispatch, itemsList]
   );
 
-  const requestBody = {
-    customerId: cartState.customerId,
-    totalPrice: cartState.totalPrice,
-    itemsList: cartState.itemsList,
-  };
+  const requestBody = useMemo(() => {
+    return {
+      customerId: cartState.customerId,
+      totalPrice: cartState.totalPrice,
+      itemsList: cartState.itemsList,
+    };
+  }, [cartState]);
 
   const handleCreateOrder = useCallback(() => {
     dispatch(CREATE_ORDER_REQUEST(requestBody));

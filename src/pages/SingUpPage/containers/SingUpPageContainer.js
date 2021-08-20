@@ -1,5 +1,6 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback, useEffect, useMemo } from "react";
 import { useHistory } from "react-router-dom";
+import validator from "validator";
 
 import SingUpPageLayout from "../components/SingUpPageLayout";
 import { useDispatch, useSelector } from "react-redux";
@@ -22,6 +23,7 @@ const SingUpPageContainer = () => {
     lastName: "",
     gender: "",
     password: "",
+    passwordConfirmation: "",
     phone: "",
   });
 
@@ -39,6 +41,41 @@ const SingUpPageContainer = () => {
     }
   }, [errors]);
 
+  const isEmail = useMemo(
+    () => validator.isEmail(formValues.email),
+    [formValues]
+  );
+
+  const isFirstNameEmpty = useMemo(() => {
+    validator.isEmpty(formValues.firstName, {
+      ignore_whitespace: true,
+    });
+  }, [formValues]);
+
+  const isLastNameEmpty = useMemo(() => {
+    validator.isEmpty(formValues.lastName, {
+      ignore_whitespace: true,
+    });
+  }, [formValues]);
+
+  const isGenderEmpty = useMemo(() => {
+    validator.isEmpty(formValues.gender);
+  }, [formValues]);
+
+  const isPasswordConfirmed = useMemo(() => {
+    return formValues.password === formValues.passwordConfirmation;
+  }, [formValues]);
+
+  const isPhoneNumber = useMemo(() => {
+    validator.isMobilePhone(formValues.phone, ["be-BY"]);
+  }, [formValues]);
+
+  const isSubmitButtonDisabled = useMemo(() => {
+    return Object.keys(formValues).some((key) => {
+      return !formValues[key].length;
+    });
+  }, [formValues]);
+
   const handleCloseModal = useCallback(() => {
     dispatch(CLOSE_MODAL());
     history.push(ROUTES.LOG_IN_PAGE);
@@ -54,6 +91,13 @@ const SingUpPageContainer = () => {
       isShowModal={isShowModal}
       handleCloseModal={handleCloseModal}
       errors={errors}
+      isEmail={isEmail}
+      isFirstNameEmpty={isFirstNameEmpty}
+      isLastNameEmpty={isLastNameEmpty}
+      isGenderEmpty={isGenderEmpty}
+      isPasswordConfirmed={isPasswordConfirmed}
+      isPhoneNumber={isPhoneNumber}
+      isSubmitButtonDisabled={isSubmitButtonDisabled}
     />
   );
 };

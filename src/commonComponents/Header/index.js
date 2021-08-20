@@ -1,13 +1,13 @@
 import React, { useCallback } from "react";
 import { Badge, Box, withStyles } from "@material-ui/core";
-
-import navItems from "./config/navItems";
+import { ShoppingCart } from "@material-ui/icons";
 import { Link, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-import styles from "./styles";
+import navItems from "./config/navItems";
 import PurpleButton from "../Buttons/PurpleButton";
-import { ShoppingCart } from "@material-ui/icons";
+
+import styles from "./styles";
 
 const Header = ({ classes }) => {
   const history = useHistory();

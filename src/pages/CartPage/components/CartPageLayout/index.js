@@ -4,10 +4,10 @@ import { Box, Card, Typography, withStyles } from "@material-ui/core";
 
 import PurpleButton from "../../../../commonComponents/Buttons/PurpleButton";
 import DefaultBackdrop from "../../../../commonComponents/Spinner/DefaultSpinner";
-
-import styles from "./styles";
 import CartTotalCard from "../../../../commonComponents/Cards/CartTotalCard";
 import OrderSuccessModal from "../../../../commonComponents/Modals/OrderSuccessModal";
+
+import styles from "./styles";
 
 const CartPageLayout = ({
   classes,

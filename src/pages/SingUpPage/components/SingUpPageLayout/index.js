@@ -10,6 +10,7 @@ import {
   withStyles,
   Typography,
 } from "@material-ui/core";
+import InputMask from "react-input-mask";
 
 import FilledInput from "../../../../commonComponents/Inputs/FilledInput";
 import { ROUTES } from "../../../../routes/routesNames";
@@ -28,6 +29,13 @@ const SingUpPageLayout = ({
   isShowModal,
   handleCloseModal,
   errors,
+  isEmail,
+  isFirstNameEmpty,
+  isLastNameEmpty,
+  isGenderEmpty,
+  isPasswordConfirmed,
+  isPhoneNumber,
+  isSubmitButtonDisabled,
 }) => {
   return (
     <Box className={classes.wrapper}>
@@ -40,6 +48,9 @@ const SingUpPageLayout = ({
             label="Email"
             handleChange={handleChange}
           />
+          {!isEmail && (
+            <Box className={classes.errorMessage}>Email must be an email</Box>
+          )}
         </Box>
         <Box className={classes.inputWrapper}>
           <FilledInput
@@ -49,6 +60,11 @@ const SingUpPageLayout = ({
             label="First Name"
             handleChange={handleChange}
           />
+          {isFirstNameEmpty && (
+            <Box className={classes.errorMessage}>
+              First name must be filled
+            </Box>
+          )}
         </Box>
         <Box className={classes.inputWrapper}>
           <FilledInput
@@ -58,6 +74,9 @@ const SingUpPageLayout = ({
             label="Last Name"
             handleChange={handleChange}
           />
+          {isLastNameEmpty && (
+            <Box className={classes.errorMessage}>Last name must be filled</Box>
+          )}
         </Box>
         <Box className={classes.selectWrapper}>
           <FormControl className={classes.select}>
@@ -74,6 +93,9 @@ const SingUpPageLayout = ({
               <MenuItem value={"female"}>Female</MenuItem>
             </Select>
           </FormControl>
+          {isGenderEmpty && (
+            <Box className={classes.errorMessage}>Gender must be filled</Box>
+          )}
         </Box>
         <Box className={classes.inputWrapper}>
           <FilledInput
@@ -86,15 +108,42 @@ const SingUpPageLayout = ({
         </Box>
         <Box className={classes.inputWrapper}>
           <FilledInput
+            value={singUpData.passwordConfirmation}
+            name="passwordConfirmation"
+            type="password"
+            label="Confirm Password"
+            handleChange={handleChange}
+          />
+          {!isPasswordConfirmed && (
+            <Box className={classes.errorMessage}>Passwords don't match</Box>
+          )}
+        </Box>
+        <Box className={classes.inputWrapper}>
+          <FilledInput
             value={singUpData.phone}
             name="phone"
             type="text"
             label="Phone"
             handleChange={handleChange}
           />
+          {!isPhoneNumber && (
+            <Box className={classes.errorMessage}>
+              Phone must be in +375xxxxxxxxx format
+            </Box>
+          )}
         </Box>
+        {/*        <Box>
+          <InputMask mask="99 999 99 99" value={singUpData.phone} maskChar=" ">
+            {() => <FilledInput />}
+          </InputMask>
+        </Box>*/}
         <Box className={classes.buttonWrapper}>
-          <PurpleButton type="submit" buttonTitle="Create account" />
+          <PurpleButton
+            type="submit"
+            isButtonDisabled={isSubmitButtonDisabled}
+            buttonTitle="Create account"
+            disabledButtonTitle="Create account"
+          />
         </Box>
         {errors && <Box className={classes.errorsWrapper}>{errors}</Box>}
       </form>

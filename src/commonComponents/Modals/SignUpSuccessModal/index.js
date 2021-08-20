@@ -3,9 +3,10 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { Box, Modal, Typography, withStyles } from "@material-ui/core";
 
-import styles from "./styles";
 import PurpleButton from "../../Buttons/PurpleButton";
 import { ROUTES } from "../../../routes/routesNames";
+
+import styles from "./styles";
 
 const SignUpSuccessModal = ({ classes, open, onClose }) => {
   return (

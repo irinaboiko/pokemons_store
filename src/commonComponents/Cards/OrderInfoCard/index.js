@@ -5,7 +5,6 @@ import {
   AccordionDetails,
   AccordionSummary,
   Box,
-  Card,
   Typography,
   withStyles,
 } from "@material-ui/core";

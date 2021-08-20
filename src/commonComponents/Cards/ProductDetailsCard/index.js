@@ -13,7 +13,6 @@ import {
 import styles from "./styles";
 import TableCharacteristics from "../../Tables/CharacteristicsTable";
 import PurpleButton from "../../Buttons/PurpleButton";
-import Icons from "./config/icons";
 import StatsTable from "../../Tables/StatsTable";
 
 const ProductDetailsCard = ({
@@ -54,7 +53,7 @@ const ProductDetailsCard = ({
           <StatsTable
             characteristics={stats}
             tableTitle="Stats"
-            rowTitle={"title"}
+            rowTitle="title"
             rowInfo="value"
           />
         </Box>

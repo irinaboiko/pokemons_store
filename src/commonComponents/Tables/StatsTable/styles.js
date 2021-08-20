@@ -5,8 +5,13 @@ const styles = () => ({
   tableCapture: {
     marginBottom: 10,
   },
+  rowTitle: {
+    display: "flex",
+    alignItems: "center",
+  },
   stateIcon: {
     height: 50,
+    marginRight: 10,
   },
 });
 

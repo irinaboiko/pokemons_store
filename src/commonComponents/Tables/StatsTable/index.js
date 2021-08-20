@@ -34,12 +34,15 @@ const StatsTable = ({
             {characteristics?.map((characteristic) => {
               return (
                 <TableRow key={characteristic[rowTitle]}>
-                  <TableCell>
+                  <TableCell className={classes.rowTitle}>
                     <img
                       className={classes.stateIcon}
-                      src={Icons[characteristic.title]}
+                      src={Icons[characteristic[rowTitle]]}
                       alt="stat icon"
                     />
+                    <Typography variant="body1">
+                      {characteristic[rowTitle]}
+                    </Typography>
                   </TableCell>
                   <TableCell>{characteristic[rowInfo]}</TableCell>
                 </TableRow>

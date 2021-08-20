@@ -16,6 +16,8 @@ const LoginPageLayout = ({
   handleChange,
   handleSubmit,
   errors,
+  isEmail,
+  isSubmitButtonDisabled,
 }) => {
   return (
     <Box className={classes.wrapper}>
@@ -31,6 +33,9 @@ const LoginPageLayout = ({
             handleChange={handleChange}
             label="Email"
           />
+          {!isEmail && (
+            <Box className={classes.errorMessage}>Email must be an email</Box>
+          )}
         </Box>
         <Box className={classes.inputWrapper}>
           <FilledInput
@@ -42,7 +47,12 @@ const LoginPageLayout = ({
           />
         </Box>
         <Box className={classes.inputWrapper}>
-          <PurpleButton type="submit" buttonTitle="LOG IN" />
+          <PurpleButton
+            type="submit"
+            isButtonDisabled={isSubmitButtonDisabled}
+            buttonTitle="LOG IN"
+            disabledButtonTitle="LOG IN"
+          />
         </Box>
         {errors && <Box className={classes.errorsWrapper}>{errors}</Box>}
       </form>

@@ -1,6 +1,7 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback, useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import validator from "validator";
 
 import LoginPageLayout from "../components/LoginPageLayout";
 import { useForm } from "../../../hooks";
@@ -38,6 +39,16 @@ const LoginPageContainer = () => {
     }
   }, [errors]);
 
+  const isEmail = useMemo(() => {
+    validator.isEmail(formValues.email);
+  }, [formValues]);
+
+  const isSubmitButtonDisabled = useMemo(() => {
+    return Object.keys(formValues).some((key) => {
+      return !formValues[key].length;
+    });
+  }, [formValues]);
+
   return (
     <LoginPageLayout
       loginData={formValues}
@@ -45,6 +56,8 @@ const LoginPageContainer = () => {
       handleSubmit={handleSubmit}
       isLoading={isLoading}
       errors={errors}
+      isEmail={isEmail}
+      isSubmitButtonDisabled={isSubmitButtonDisabled}
     />
   );
 };
