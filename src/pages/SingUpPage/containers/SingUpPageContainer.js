@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useHistory } from "react-router-dom";
 import validator from "validator";
 
@@ -27,6 +27,28 @@ const SingUpPageContainer = () => {
     phone: "",
   });
 
+  const [touchedValues, setTouchedValues] = useState({
+    email: false,
+    firstName: false,
+    lastName: false,
+    gender: false,
+    password: false,
+    passwordConfirmation: false,
+    phone: false,
+  });
+
+  const handleBlur = useCallback(
+    (event) => {
+      const { name } = event.target;
+
+      setTouchedValues({
+        ...touchedValues,
+        [name]: true,
+      });
+    },
+    [touchedValues]
+  );
+
   const handleSubmit = useCallback(
     (event) => {
       event.preventDefault();
@@ -47,19 +69,23 @@ const SingUpPageContainer = () => {
   );
 
   const isFirstNameEmpty = useMemo(() => {
-    validator.isEmpty(formValues.firstName, {
+    return validator.isEmpty(formValues.firstName, {
       ignore_whitespace: true,
     });
   }, [formValues]);
 
   const isLastNameEmpty = useMemo(() => {
-    validator.isEmpty(formValues.lastName, {
+    return validator.isEmpty(formValues.lastName, {
       ignore_whitespace: true,
     });
   }, [formValues]);
 
   const isGenderEmpty = useMemo(() => {
-    validator.isEmpty(formValues.gender);
+    return validator.isEmpty(formValues.gender);
+  }, [formValues]);
+
+  const isPasswordEmpty = useMemo(() => {
+    return validator.isEmpty(formValues.password);
   }, [formValues]);
 
   const isPasswordConfirmed = useMemo(() => {
@@ -67,14 +93,51 @@ const SingUpPageContainer = () => {
   }, [formValues]);
 
   const isPhoneNumber = useMemo(() => {
-    validator.isMobilePhone(formValues.phone, ["be-BY"]);
+    return validator.isMobilePhone(formValues.phone, ["be-BY"]);
   }, [formValues]);
 
-  const isSubmitButtonDisabled = useMemo(() => {
+  const isFieldsEmpty = useMemo(() => {
     return Object.keys(formValues).some((key) => {
       return !formValues[key].length;
     });
   }, [formValues]);
+
+  const isTouchedEmail = useMemo(() => {
+    return touchedValues.email;
+  }, [touchedValues]);
+
+  const isTouchedFirstName = useMemo(() => {
+    return touchedValues.firstName;
+  }, [touchedValues]);
+
+  const isTouchedLastName = useMemo(() => {
+    return touchedValues.lastName;
+  }, [touchedValues]);
+
+  const isTouchedGender = useMemo(() => {
+    return touchedValues.gender;
+  }, [touchedValues]);
+
+  const isTouchedPassword = useMemo(() => {
+    return touchedValues.password;
+  }, [touchedValues]);
+
+  const isTouchedPasswordConfirmation = useMemo(() => {
+    return touchedValues.passwordConfirmation;
+  }, [touchedValues]);
+
+  const isTouchedPhone = useMemo(() => {
+    return touchedValues.phone;
+  }, [touchedValues]);
+
+  const isSubmitButtonDisabled =
+    !isEmail ||
+    isFirstNameEmpty ||
+    isLastNameEmpty ||
+    isGenderEmpty ||
+    !isPasswordConfirmed ||
+    !isPhoneNumber ||
+    isFieldsEmpty;
 
   const handleCloseModal = useCallback(() => {
     dispatch(CLOSE_MODAL());
@@ -85,6 +148,7 @@ const SingUpPageContainer = () => {
     <SingUpPageLayout
       singUpData={formValues}
       handleChange={handleChange}
+      handleBlur={handleBlur}
       handleReset={handleReset}
       handleSubmit={handleSubmit}
       isLoading={isLoading}
@@ -95,8 +159,16 @@ const SingUpPageContainer = () => {
       isFirstNameEmpty={isFirstNameEmpty}
       isLastNameEmpty={isLastNameEmpty}
       isGenderEmpty={isGenderEmpty}
+      isPasswordEmpty={isPasswordEmpty}
       isPasswordConfirmed={isPasswordConfirmed}
       isPhoneNumber={isPhoneNumber}
+      isTouchedEmail={isTouchedEmail}
+      isTouchedFirstName={isTouchedFirstName}
+      isTouchedLastName={isTouchedLastName}
+      isTouchedGender={isTouchedGender}
+      isTouchedPassword={isTouchedPassword}
+      isTouchedPasswordConfirmation={isTouchedPasswordConfirmation}
+      isTouchedPhone={isTouchedPhone}
       isSubmitButtonDisabled={isSubmitButtonDisabled}
     />
   );

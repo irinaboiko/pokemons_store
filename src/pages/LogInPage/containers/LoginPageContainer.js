@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import validator from "validator";
@@ -18,6 +18,23 @@ const LoginPageContainer = () => {
     email: "",
     password: "",
   });
+
+  const [touchedValues, setTouchedValues] = useState({
+    email: false,
+    password: false,
+  });
+
+  const handleBlur = useCallback(
+    (event) => {
+      const { name } = event.target;
+
+      setTouchedValues({
+        ...touchedValues,
+        [name]: true,
+      });
+    },
+    [touchedValues]
+  );
 
   const handleSubmit = useCallback(
     (event) => {
@@ -40,23 +57,31 @@ const LoginPageContainer = () => {
   }, [errors]);
 
   const isEmail = useMemo(() => {
-    validator.isEmail(formValues.email);
+    return validator.isEmail(formValues.email);
   }, [formValues]);
 
-  const isSubmitButtonDisabled = useMemo(() => {
+  const isTouchedEmail = useMemo(() => {
+    return touchedValues.email;
+  }, [touchedValues]);
+
+  const isFieldsEmpty = useMemo(() => {
     return Object.keys(formValues).some((key) => {
       return !formValues[key].length;
     });
   }, [formValues]);
 
+  const isSubmitButtonDisabled = !isEmail && !isFieldsEmpty;
+
   return (
     <LoginPageLayout
       loginData={formValues}
       handleChange={handleChange}
+      handleBlur={handleBlur}
       handleSubmit={handleSubmit}
       isLoading={isLoading}
       errors={errors}
       isEmail={isEmail}
+      isTouchedEmail={isTouchedEmail}
       isSubmitButtonDisabled={isSubmitButtonDisabled}
     />
   );

@@ -11,6 +11,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import InputMask from "react-input-mask";
+import MaterialInput from "@material-ui/core/Input";
 
 import FilledInput from "../../../../commonComponents/Inputs/FilledInput";
 import { ROUTES } from "../../../../routes/routesNames";
@@ -24,7 +25,7 @@ const SingUpPageLayout = ({
   classes,
   singUpData,
   handleChange,
-  handleReset,
+  handleBlur,
   handleSubmit,
   isShowModal,
   handleCloseModal,
@@ -33,8 +34,16 @@ const SingUpPageLayout = ({
   isFirstNameEmpty,
   isLastNameEmpty,
   isGenderEmpty,
+  isPasswordEmpty,
   isPasswordConfirmed,
   isPhoneNumber,
+  isTouchedEmail,
+  isTouchedFirstName,
+  isTouchedLastName,
+  isTouchedGender,
+  isTouchedPassword,
+  isTouchedPasswordConfirmation,
+  isTouchedPhone,
   isSubmitButtonDisabled,
 }) => {
   return (
@@ -47,8 +56,9 @@ const SingUpPageLayout = ({
             type="email"
             label="Email"
             handleChange={handleChange}
+            handleBlur={handleBlur}
           />
-          {!isEmail && (
+          {!isEmail && isTouchedEmail && (
             <Box className={classes.errorMessage}>Email must be an email</Box>
           )}
         </Box>
@@ -59,8 +69,9 @@ const SingUpPageLayout = ({
             type="text"
             label="First Name"
             handleChange={handleChange}
+            handleBlur={handleBlur}
           />
-          {isFirstNameEmpty && (
+          {isFirstNameEmpty && isTouchedFirstName && (
             <Box className={classes.errorMessage}>
               First name must be filled
             </Box>
@@ -73,8 +84,9 @@ const SingUpPageLayout = ({
             type="text"
             label="Last Name"
             handleChange={handleChange}
+            handleBlur={handleBlur}
           />
-          {isLastNameEmpty && (
+          {isLastNameEmpty && isTouchedLastName && (
             <Box className={classes.errorMessage}>Last name must be filled</Box>
           )}
         </Box>
@@ -88,12 +100,13 @@ const SingUpPageLayout = ({
               name="gender"
               value={singUpData.gender}
               onChange={handleChange}
+              handleBlur={handleBlur}
             >
               <MenuItem value={"male"}>Male</MenuItem>
               <MenuItem value={"female"}>Female</MenuItem>
             </Select>
           </FormControl>
-          {isGenderEmpty && (
+          {isGenderEmpty && isTouchedGender && (
             <Box className={classes.errorMessage}>Gender must be filled</Box>
           )}
         </Box>
@@ -104,7 +117,11 @@ const SingUpPageLayout = ({
             type="password"
             label="Password"
             handleChange={handleChange}
+            handleBlur={handleBlur}
           />
+          {isPasswordEmpty && isTouchedPassword && (
+            <Box className={classes.errorMessage}>Passwords must be filled</Box>
+          )}
         </Box>
         <Box className={classes.inputWrapper}>
           <FilledInput
@@ -113,8 +130,9 @@ const SingUpPageLayout = ({
             type="password"
             label="Confirm Password"
             handleChange={handleChange}
+            handleBlur={handleBlur}
           />
-          {!isPasswordConfirmed && (
+          {!isPasswordConfirmed && isTouchedPasswordConfirmation && (
             <Box className={classes.errorMessage}>Passwords don't match</Box>
           )}
         </Box>
@@ -125,18 +143,30 @@ const SingUpPageLayout = ({
             type="text"
             label="Phone"
             handleChange={handleChange}
+            handleBlur={handleBlur}
           />
-          {!isPhoneNumber && (
+          {!isPhoneNumber && isTouchedPhone && (
             <Box className={classes.errorMessage}>
               Phone must be in +375xxxxxxxxx format
             </Box>
           )}
         </Box>
-        {/*        <Box>
-          <InputMask mask="99 999 99 99" value={singUpData.phone} maskChar=" ">
-            {() => <FilledInput />}
+        <Box>
+          {/*<FilledInput value={singUpData.phone}>
+            <InputMask
+              mask="+4\9 99 999 99"
+              maskChar=" "
+              value={singUpData.phone}
+            />
+          </FilledInput>*/}
+          <InputMask
+            mask="99/99/9999"
+            value={singUpData.phone}
+            onChange={handleChange}
+          >
+            {/*<MaterialInput type="tel" disableUnderline />*/}
           </InputMask>
-        </Box>*/}
+        </Box>
         <Box className={classes.buttonWrapper}>
           <PurpleButton
             type="submit"
@@ -171,7 +201,7 @@ SingUpPageLayout.propTypes = {
     password: PropTypes.string.isRequired,
     phone: PropTypes.string.isRequired,
     handleChange: PropTypes.func.isRequired,
-    handleReset: PropTypes.func.isRequired,
+    handleBlur: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     isShowModal: PropTypes.bool.isRequired,
     handleCloseModal: PropTypes.func.isRequired,

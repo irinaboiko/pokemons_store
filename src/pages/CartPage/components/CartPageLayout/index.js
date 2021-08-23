@@ -1,6 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Box, Card, Typography, withStyles } from "@material-ui/core";
+import {
+  Box,
+  Card,
+  CircularProgress,
+  Typography,
+  withStyles,
+} from "@material-ui/core";
 
 import PurpleButton from "../../../../commonComponents/Buttons/PurpleButton";
 import DefaultBackdrop from "../../../../commonComponents/Spinner/DefaultSpinner";
@@ -17,6 +23,7 @@ const CartPageLayout = ({
   handleCreateOrder,
   cartInfo,
   isLoading,
+  isChangeQuantity,
   isShowModal,
   handleCloseModal,
   itemsList,
@@ -39,29 +46,35 @@ const CartPageLayout = ({
                     <Typography variant="h5">{cartItem.name}</Typography>
                   </Box>
                   <Box className={classes.itemButtons}>
-                    <Box className={classes.quantityButtons}>
-                      <PurpleButton
-                        handleOnButtonClick={() => {
-                          handleDecrementItem(cartItem.id);
-                        }}
-                        buttonTitle="Minus"
-                      />
-                      <span className={classes.itemQuantity}>
-                        {cartItem.quantity}
-                      </span>
-                      <PurpleButton
-                        handleOnButtonClick={() => {
-                          handleIncrementItem(cartItem.id);
-                        }}
-                        buttonTitle="Plus"
-                      />
-                    </Box>
-                    <PurpleButton
-                      handleOnButtonClick={() => {
-                        handleRemoveItem(cartItem.id);
-                      }}
-                      buttonTitle="Remove"
-                    />
+                    {isChangeQuantity ? (
+                      <CircularProgress />
+                    ) : (
+                      <>
+                        <Box className={classes.quantityButtons}>
+                          <PurpleButton
+                            handleOnButtonClick={() => {
+                              handleDecrementItem(cartItem.id);
+                            }}
+                            buttonTitle="Minus"
+                          />
+                          <span className={classes.itemQuantity}>
+                            {cartItem.quantity}
+                          </span>
+                          <PurpleButton
+                            handleOnButtonClick={() => {
+                              handleIncrementItem(cartItem.id);
+                            }}
+                            buttonTitle="Plus"
+                          />
+                        </Box>
+                        <PurpleButton
+                          handleOnButtonClick={() => {
+                            handleRemoveItem(cartItem.id);
+                          }}
+                          buttonTitle="Remove"
+                        />
+                      </>
+                    )}
                   </Box>
                   <Box>
                     <Typography variant="h6" className={classes.itemPrice}>
@@ -97,6 +110,7 @@ CartPageLayout.propTypes = {
   handleCreateOrder: PropTypes.func.isRequired,
   cartInfo: PropTypes.object.isRequired,
   isLoading: PropTypes.bool.isRequired,
+  isChangeQuantity: PropTypes.bool.isRequired,
   isShowModal: PropTypes.bool.isRequired,
   handleCloseModal: PropTypes.func.isRequired,
   itemsList: PropTypes.array.isRequired,

@@ -8,14 +8,20 @@ import { GET_ORDERS_INFO_REQUEST } from "../actions";
 const AccountPageContainer = () => {
   const dispatch = useDispatch();
 
-  const { userInfo } = useSelector((state) => state.auth);
+  const { userInfo, isLoading } = useSelector((state) => state.auth);
   const { orders } = useSelector((state) => state.accountPage);
 
   useEffect(() => {
     dispatch(GET_ORDERS_INFO_REQUEST());
   }, [dispatch]);
 
-  return <AccountPageLayout userInfo={userInfo} ordersList={orders} />;
+  return (
+    <AccountPageLayout
+      userInfo={userInfo}
+      ordersList={orders}
+      isLoading={isLoading}
+    />
+  );
 };
 
 export default AccountPageContainer;

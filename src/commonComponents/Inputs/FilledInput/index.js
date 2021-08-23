@@ -4,7 +4,15 @@ import { TextField, withStyles } from "@material-ui/core";
 
 import styles from "./styles";
 
-const FilledInput = ({ value, label, handleChange, classes, type, name }) => {
+const FilledInput = ({
+  value,
+  label,
+  handleChange,
+  handleBlur,
+  classes,
+  type,
+  name,
+}) => {
   return (
     <TextField
       className={classes.input}
@@ -12,6 +20,7 @@ const FilledInput = ({ value, label, handleChange, classes, type, name }) => {
       value={value}
       label={label}
       onChange={handleChange}
+      onBlur={handleBlur}
       type={type}
       name={name}
     />

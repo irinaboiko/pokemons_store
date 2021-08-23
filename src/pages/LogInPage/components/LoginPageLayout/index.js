@@ -14,9 +14,11 @@ const LoginPageLayout = ({
   classes,
   loginData,
   handleChange,
+  handleBlur,
   handleSubmit,
   errors,
   isEmail,
+  isTouchedEmail,
   isSubmitButtonDisabled,
 }) => {
   return (
@@ -31,9 +33,10 @@ const LoginPageLayout = ({
             name="email"
             type="email"
             handleChange={handleChange}
+            handleBlur={handleBlur}
             label="Email"
           />
-          {!isEmail && (
+          {!isEmail && isTouchedEmail && (
             <Box className={classes.errorMessage}>Email must be an email</Box>
           )}
         </Box>
@@ -43,6 +46,7 @@ const LoginPageLayout = ({
             name="password"
             type="password"
             handleChange={handleChange}
+            handleBlur={handleBlur}
             label="Password"
           />
         </Box>
@@ -76,7 +80,11 @@ LoginPageLayout.propTypes = {
     password: PropTypes.string.isRequired,
   }),
   handleChange: PropTypes.func.isRequired,
+  handleBlur: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
+  isEmail: PropTypes.bool.isRequired,
+  isTouchedEmail: PropTypes.bool.isRequired,
+  isSubmitButtonDisabled: PropTypes.bool.isRequired,
 };
 
 export default withStyles(styles)(LoginPageLayout);
