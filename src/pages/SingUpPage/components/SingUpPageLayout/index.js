@@ -49,124 +49,123 @@ const SingUpPageLayout = ({
   return (
     <Box className={classes.wrapper}>
       <form onSubmit={handleSubmit}>
-        <Box className={classes.inputWrapper}>
-          <FilledInput
-            value={singUpData.email}
-            name="email"
-            type="email"
-            label="Email"
-            handleChange={handleChange}
-            handleBlur={handleBlur}
-          />
-          {!isEmail && isTouchedEmail && (
-            <Box className={classes.errorMessage}>Email must be an email</Box>
-          )}
-        </Box>
-        <Box className={classes.inputWrapper}>
-          <FilledInput
-            value={singUpData.firstName}
-            name="firstName"
-            type="text"
-            label="First Name"
-            handleChange={handleChange}
-            handleBlur={handleBlur}
-          />
-          {isFirstNameEmpty && isTouchedFirstName && (
-            <Box className={classes.errorMessage}>
-              First name must be filled
-            </Box>
-          )}
-        </Box>
-        <Box className={classes.inputWrapper}>
-          <FilledInput
-            value={singUpData.lastName}
-            name="lastName"
-            type="text"
-            label="Last Name"
-            handleChange={handleChange}
-            handleBlur={handleBlur}
-          />
-          {isLastNameEmpty && isTouchedLastName && (
-            <Box className={classes.errorMessage}>Last name must be filled</Box>
-          )}
-        </Box>
-        <Box className={classes.selectWrapper}>
-          <FormControl className={classes.select}>
-            <InputLabel id="demo-simple-select-filled-label">Gender</InputLabel>
-            <Select
-              labelId="demo-simple-select-filled-label"
-              id="demo-simple-select-filled"
-              label="Gender"
-              name="gender"
-              value={singUpData.gender}
-              onChange={handleChange}
+        <Box className={classes.rowWrapper}>
+          <Box className={classes.inputWrapper}>
+            <FilledInput
+              value={singUpData.firstName}
+              name="firstName"
+              type="text"
+              label="First Name"
+              handleChange={handleChange}
               handleBlur={handleBlur}
-            >
-              <MenuItem value={"male"}>Male</MenuItem>
-              <MenuItem value={"female"}>Female</MenuItem>
-            </Select>
-          </FormControl>
-          {isGenderEmpty && isTouchedGender && (
-            <Box className={classes.errorMessage}>Gender must be filled</Box>
-          )}
-        </Box>
-        <Box className={classes.inputWrapper}>
-          <FilledInput
-            value={singUpData.password}
-            name="password"
-            type="password"
-            label="Password"
-            handleChange={handleChange}
-            handleBlur={handleBlur}
-          />
-          {isPasswordEmpty && isTouchedPassword && (
-            <Box className={classes.errorMessage}>Passwords must be filled</Box>
-          )}
-        </Box>
-        <Box className={classes.inputWrapper}>
-          <FilledInput
-            value={singUpData.passwordConfirmation}
-            name="passwordConfirmation"
-            type="password"
-            label="Confirm Password"
-            handleChange={handleChange}
-            handleBlur={handleBlur}
-          />
-          {!isPasswordConfirmed && isTouchedPasswordConfirmation && (
-            <Box className={classes.errorMessage}>Passwords don't match</Box>
-          )}
-        </Box>
-        <Box className={classes.inputWrapper}>
-          <FilledInput
-            value={singUpData.phone}
-            name="phone"
-            type="text"
-            label="Phone"
-            handleChange={handleChange}
-            handleBlur={handleBlur}
-          />
-          {!isPhoneNumber && isTouchedPhone && (
-            <Box className={classes.errorMessage}>
-              Phone must be in +375xxxxxxxxx format
-            </Box>
-          )}
-        </Box>
-        <Box>
-          {/*<FilledInput value={singUpData.phone}>
-            <InputMask
-              mask="+4\9 99 999 99"
-              maskChar=" "
-              value={singUpData.phone}
             />
-          </FilledInput>*/}
-          <InputMask
-            mask="99/99/9999"
-            value={singUpData.phone}
-            onChange={handleChange}
-          >
-            {/*<MaterialInput type="tel" disableUnderline />*/}
-          </InputMask>
+            {isFirstNameEmpty && isTouchedFirstName && (
+              <Box className={classes.errorMessage}>
+                First name must be filled
+              </Box>
+            )}
+          </Box>
+          <Box className={classes.inputWrapper}>
+            <FilledInput
+              value={singUpData.lastName}
+              name="lastName"
+              type="text"
+              label="Last Name"
+              handleChange={handleChange}
+              handleBlur={handleBlur}
+            />
+            {isLastNameEmpty && isTouchedLastName && (
+              <Box className={classes.errorMessage}>
+                Last name must be filled
+              </Box>
+            )}
+          </Box>
         </Box>
+        <Box className={classes.rowWrapper}>
+          <Box className={classes.selectWrapper}>
+            <FormControl className={classes.select}>
+              <InputLabel id="demo-simple-select-filled-label">
+                Gender
+              </InputLabel>
+              <Select
+                labelId="demo-simple-select-filled-label"
+                id="demo-simple-select-filled"
+                label="Gender"
+                name="gender"
+                value={singUpData.gender}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              >
+                <MenuItem value={"male"}>Male</MenuItem>
+                <MenuItem value={"female"}>Female</MenuItem>
+              </Select>
+            </FormControl>
+            {isGenderEmpty && isTouchedGender && (
+              <Box className={classes.errorMessage}>Gender must be filled</Box>
+            )}
+          </Box>
+        </Box>
+        <Box className={classes.rowWrapper}>
+          <Box className={classes.inputWrapper}>
+            <FilledInput
+              value={singUpData.email}
+              name="email"
+              type="email"
+              label="Email"
+              handleChange={handleChange}
+              handleBlur={handleBlur}
+            />
+            {!isEmail && isTouchedEmail && (
+              <Box className={classes.errorMessage}>Email must be an email</Box>
+            )}
+          </Box>
+          <Box className={classes.inputWrapper}>
+            <FilledInput
+              value={singUpData.phone}
+              name="phone"
+              type="text"
+              label="Phone"
+              handleChange={handleChange}
+              handleBlur={handleBlur}
+            />
+            {!isPhoneNumber && isTouchedPhone && (
+              <Box className={classes.errorMessage}>
+                Phone must be in +375xxxxxxxxx format
+              </Box>
+            )}
+          </Box>
+        </Box>
+        <Box className={classes.rowWrapper}>
+          <Box className={classes.inputWrapper}>
+            <FilledInput
+              value={singUpData.password}
+              name="password"
+              type="password"
+              label="Password"
+              handleChange={handleChange}
+              handleBlur={handleBlur}
+            />
+            {isPasswordEmpty && isTouchedPassword && (
+              <Box className={classes.errorMessage}>
+                Passwords must be filled
+              </Box>
+            )}
+          </Box>
+          <Box className={classes.inputWrapper}>
+            <FilledInput
+              value={singUpData.passwordConfirmation}
+              name="passwordConfirmation"
+              type="password"
+              label="Confirm Password"
+              handleChange={handleChange}
+              handleBlur={handleBlur}
+            />
+            {!isPasswordConfirmed && isTouchedPasswordConfirmation && (
+              <Box className={classes.errorMessage}>Passwords don't match</Box>
+            )}
+          </Box>
+        </Box>
+
         <Box className={classes.buttonWrapper}>
           <PurpleButton
             type="submit"

@@ -52,7 +52,9 @@ const SingUpPageContainer = () => {
   const handleSubmit = useCallback(
     (event) => {
       event.preventDefault();
-      dispatch(SIGNUP_REQUEST(formValues));
+      console.log(formValues);
+
+      //dispatch(SIGNUP_REQUEST(formValues));
     },
     [dispatch, formValues]
   );
@@ -117,6 +119,8 @@ const SingUpPageContainer = () => {
   const isTouchedGender = useMemo(() => {
     return touchedValues.gender;
   }, [touchedValues]);
+
+  console.log(isTouchedGender);
 
   const isTouchedPassword = useMemo(() => {
     return touchedValues.password;

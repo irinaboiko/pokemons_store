@@ -3,13 +3,22 @@ const styles = () => ({
     position: "fixed",
     top: "50%",
     left: "50%",
-    width: 230,
+    //width: 230,
     transform: "translate(-50%, -50%)",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
     padding: 20,
+  },
+  rowWrapper: {
+    display: "flex",
+  },
+  fieldsWrapper: {
+    display: "flex",
+  },
+  columnWrapper: {
+    width: 230,
   },
   inputWrapper: {
     width: "100%",
