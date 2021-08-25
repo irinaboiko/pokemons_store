@@ -55,7 +55,7 @@ const CartPageLayout = ({
                             handleOnButtonClick={() => {
                               handleDecrementItem(cartItem.id);
                             }}
-                            buttonTitle="Minus"
+                            buttonTitle="-"
                           />
                           <span className={classes.itemQuantity}>
                             {cartItem.quantity}
@@ -64,7 +64,7 @@ const CartPageLayout = ({
                             handleOnButtonClick={() => {
                               handleIncrementItem(cartItem.id);
                             }}
-                            buttonTitle="Plus"
+                            buttonTitle="+"
                           />
                         </Box>
                         <PurpleButton

@@ -10,16 +10,15 @@ import {
   withStyles,
   Typography,
 } from "@material-ui/core";
-import InputMask from "react-input-mask";
-import MaterialInput from "@material-ui/core/Input";
 
-import FilledInput from "../../../../commonComponents/Inputs/FilledInput";
 import { ROUTES } from "../../../../routes/routesNames";
+import FilledInput from "../../../../commonComponents/Inputs/FilledInput";
 import PurpleOutlinedButton from "../../../../commonComponents/Buttons/PurpleOutlinedButton";
 import PurpleButton from "../../../../commonComponents/Buttons/PurpleButton";
+import SignUpSuccessModal from "../../../../commonComponents/Modals/SignUpSuccessModal";
+import PhoneMaskedInput from "../../../../commonComponents/Inputs/PhoneMaskedInput";
 
 import styles from "./styles";
-import SignUpSuccessModal from "../../../../commonComponents/Modals/SignUpSuccessModal";
 
 const SingUpPageLayout = ({
   classes,
@@ -120,18 +119,13 @@ const SingUpPageLayout = ({
             )}
           </Box>
           <Box className={classes.inputWrapper}>
-            <FilledInput
+            <PhoneMaskedInput
               value={singUpData.phone}
-              name="phone"
-              type="text"
-              label="Phone"
               handleChange={handleChange}
               handleBlur={handleBlur}
             />
             {!isPhoneNumber && isTouchedPhone && (
-              <Box className={classes.errorMessage}>
-                Phone must be in +375xxxxxxxxx format
-              </Box>
+              <Box className={classes.errorMessage}>Phone must be filled</Box>
             )}
           </Box>
         </Box>
