@@ -5,7 +5,7 @@ import validator from "validator";
 import SingUpPageLayout from "../components/SingUpPageLayout";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "../../../hooks";
-import { CLOSE_MODAL } from "../../SingUpPage/actions";
+import { CLOSE_MODAL, SIGNUP_REQUEST } from "../../SingUpPage/actions";
 import { ROUTES } from "../../../routes/routesNames";
 
 const SingUpPageContainer = () => {
@@ -51,9 +51,10 @@ const SingUpPageContainer = () => {
   const handleSubmit = useCallback(
     (event) => {
       event.preventDefault();
-      console.log(formValues);
 
-      //dispatch(SIGNUP_REQUEST(formValues));
+      delete formValues.passwordConfirmation;
+
+      dispatch(SIGNUP_REQUEST(formValues));
     },
     [dispatch, formValues]
   );
@@ -94,8 +95,6 @@ const SingUpPageContainer = () => {
   }, [formValues]);
 
   const formattedPhoneNumber = `+${formValues.phone.replace(/\D/g, "")}`;
-
-  console.log(formattedPhoneNumber);
 
   const isPhoneNumber = useMemo(() => {
     return validator.isMobilePhone(formattedPhoneNumber, ["be-BY"]);

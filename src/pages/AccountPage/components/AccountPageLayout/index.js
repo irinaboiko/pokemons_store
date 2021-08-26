@@ -31,8 +31,6 @@ const AccountPageLayout = ({ classes, userInfo, ordersList, isLoading }) => {
           />
           <Card className={classes.cardWrapper}>
             {ordersList?.map((order) => {
-              console.log(order);
-
               const itemsList = order.itemsList;
 
               const itemsAmount = order.itemsList.reduce(
