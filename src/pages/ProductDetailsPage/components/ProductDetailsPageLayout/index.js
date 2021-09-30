@@ -24,9 +24,9 @@ const ProductDetailsPageLayout = ({
     price: productInfo.price,
   };
 
-  const isButtonDisabled = useMemo(() => {
-    return !!cartItemsList.find((cartItem) => cartItem.id === productInfo.id);
-  }, [cartItemsList]);
+  const isButtonDisabled = !!cartItemsList.find(
+    (cartItem) => cartItem.id === productInfo.id
+  );
 
   return (
     <Box>

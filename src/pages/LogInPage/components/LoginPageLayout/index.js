@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import FilledInput from "../../../../commonComponents/Inputs/FilledInput";
 import { ROUTES } from "../../../../routes/routesNames";
 import PurpleButton from "../../../../commonComponents/Buttons/PurpleButton";
-import PurpleOutlinedButton from "../../../../commonComponents/Buttons/PurpleOutlinedButton";
 
 import styles from "./styles";
 
@@ -66,7 +65,7 @@ const LoginPageLayout = ({
         </Typography>
         <Box className={classes.inputWrapper}>
           <Link to={ROUTES.SING_UP_PAGE}>
-            <PurpleOutlinedButton buttonTitle="SING UP" />
+            <PurpleButton buttonTitle="SING UP" isOutlinedButton={true} />
           </Link>
         </Box>
       </Box>

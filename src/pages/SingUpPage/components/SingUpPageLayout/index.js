@@ -13,7 +13,6 @@ import {
 
 import { ROUTES } from "../../../../routes/routesNames";
 import FilledInput from "../../../../commonComponents/Inputs/FilledInput";
-import PurpleOutlinedButton from "../../../../commonComponents/Buttons/PurpleOutlinedButton";
 import PurpleButton from "../../../../commonComponents/Buttons/PurpleButton";
 import SignUpSuccessModal from "../../../../commonComponents/Modals/SignUpSuccessModal";
 import PhoneMaskedInput from "../../../../commonComponents/Inputs/PhoneMaskedInput";
@@ -176,7 +175,7 @@ const SingUpPageLayout = ({
         </Typography>
         <Box>
           <Link to={ROUTES.LOG_IN_PAGE}>
-            <PurpleOutlinedButton buttonTitle="LOG IN" />
+            <PurpleButton buttonTitle="LOG IN" isOutlinedButton={true} />
           </Link>
         </Box>
       </Box>

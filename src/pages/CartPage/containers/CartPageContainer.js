@@ -55,15 +55,13 @@ const CartPageContainer = () => {
     [dispatch, itemsList]
   );
 
-  const requestBody = useMemo(() => {
-    return {
+  const handleCreateOrder = useCallback(() => {
+    const requestBody = {
       customerId: cartState.customerId,
       totalPrice: cartState.totalPrice,
       itemsList: cartState.itemsList,
     };
-  }, [cartState]);
 
-  const handleCreateOrder = useCallback(() => {
     dispatch(CREATE_ORDER_REQUEST(requestBody));
   }, [dispatch, itemsList]);
 

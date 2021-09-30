@@ -12,13 +12,9 @@ import styles from "./styles";
 const Header = ({ classes }) => {
   const history = useHistory();
 
-  let cartProductsQuantity = useSelector(
+  const cartProductsQuantity = useSelector(
     (state) => state.cartPage.cartState.quantity
   );
-
-  if (!cartProductsQuantity) {
-    cartProductsQuantity = 0;
-  }
 
   const handleLogOut = useCallback(() => {
     localStorage.clear();

@@ -15,7 +15,7 @@ const BackButton = ({ classes }) => {
 
   return (
     <Box onClick={handleOnBackButtonClick} className={classes.buttonContainer}>
-      <ArrowBackIcon />
+      <ArrowBackIcon className={classes.arrow} />
     </Box>
   );
 };

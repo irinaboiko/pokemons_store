@@ -11,10 +11,13 @@ const PurpleButton = ({
   disabledButtonTitle,
   type,
   isButtonDisabled,
+  isOutlinedButton,
 }) => {
   return (
     <Button
-      className={classes.PurpleButton}
+      className={`${classes.purpleButton} ${
+        isOutlinedButton && classes.purpleOutlinedButton
+      }`}
       disabled={isButtonDisabled}
       variant="outlined"
       onClick={handleOnButtonClick}

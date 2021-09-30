@@ -14,6 +14,7 @@ import CartTotalCard from "../../../../commonComponents/Cards/CartTotalCard";
 import OrderSuccessModal from "../../../../commonComponents/Modals/OrderSuccessModal";
 
 import styles from "./styles";
+import CartProductCart from "../../../../commonComponents/Cards/CartProductCart";
 
 const CartPageLayout = ({
   classes,
@@ -40,48 +41,18 @@ const CartPageLayout = ({
           <Box>
             {itemsList?.map((cartItem) => {
               return (
-                <Card key={cartItem.id} className={classes.cartItem}>
-                  <Box className={classes.itemInfo}>
-                    <img src={cartItem.image} alt={cartItem.name} />
-                    <Typography variant="h5">{cartItem.name}</Typography>
-                  </Box>
-                  <Box className={classes.itemButtons}>
-                    {isChangeQuantity ? (
-                      <CircularProgress />
-                    ) : (
-                      <>
-                        <Box className={classes.quantityButtons}>
-                          <PurpleButton
-                            handleOnButtonClick={() => {
-                              handleDecrementItem(cartItem.id);
-                            }}
-                            buttonTitle="-"
-                          />
-                          <span className={classes.itemQuantity}>
-                            {cartItem.quantity}
-                          </span>
-                          <PurpleButton
-                            handleOnButtonClick={() => {
-                              handleIncrementItem(cartItem.id);
-                            }}
-                            buttonTitle="+"
-                          />
-                        </Box>
-                        <PurpleButton
-                          handleOnButtonClick={() => {
-                            handleRemoveItem(cartItem.id);
-                          }}
-                          buttonTitle="Remove"
-                        />
-                      </>
-                    )}
-                  </Box>
-                  <Box>
-                    <Typography variant="h6" className={classes.itemPrice}>
-                      {`$${cartItem.quantity * cartItem.price}`}
-                    </Typography>
-                  </Box>
-                </Card>
+                <CartProductCart
+                  key={cartItem.id}
+                  id={cartItem.id}
+                  name={cartItem.name}
+                  imageURL={cartItem.image}
+                  quantity={cartItem.quantity}
+                  price={cartItem.price}
+                  isChangeQuantity={isChangeQuantity}
+                  handleIncrementItem={handleIncrementItem}
+                  handleDecrementItem={handleDecrementItem}
+                  handleRemoveItem={handleRemoveItem}
+                />
               );
             })}
           </Box>

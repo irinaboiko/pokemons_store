@@ -18,6 +18,9 @@ const styles = () => ({
       transition: "all .3s",
     },
   },
+  arrow: {
+    color: "#6e45d2",
+  },
 });
 
 export default styles;

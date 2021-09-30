@@ -1,41 +1,8 @@
 import React from "react";
-import MaskedInput from "react-text-mask";
 import { TextField, withStyles } from "@material-ui/core";
 
 import styles from "./styles";
-
-const FormFormatCustom = ({ inputRef, ...other }) => {
-  return (
-    <MaskedInput
-      {...other}
-      ref={(ref) => {
-        inputRef(ref ? ref.inputElement : null);
-      }}
-      mask={[
-        "+",
-        "3",
-        "7",
-        "5",
-        "(",
-        /[1-9]/,
-        /\d/,
-        ")",
-        " ",
-        /\d/,
-        /\d/,
-        /\d/,
-        "-",
-        /\d/,
-        /\d/,
-        "-",
-        /\d/,
-        /\d/,
-      ]}
-      placeholderChar={"\u2000"}
-      showMask
-    />
-  );
-};
+import FormFormatCustom from "../FormFormatCustom/FormFormatCustom";
 
 const PhoneMaskedInput = ({ classes, value, handleChange, handleBlur }) => {
   return (
