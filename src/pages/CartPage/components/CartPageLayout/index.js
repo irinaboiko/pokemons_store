@@ -1,14 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {
-  Box,
-  Card,
-  CircularProgress,
-  Typography,
-  withStyles,
-} from "@material-ui/core";
+import { Box, Card, Typography, withStyles } from "@material-ui/core";
 
-import PurpleButton from "../../../../commonComponents/Buttons/PurpleButton";
 import DefaultBackdrop from "../../../../commonComponents/Spinner/DefaultSpinner";
 import CartTotalCard from "../../../../commonComponents/Cards/CartTotalCard";
 import OrderSuccessModal from "../../../../commonComponents/Modals/OrderSuccessModal";

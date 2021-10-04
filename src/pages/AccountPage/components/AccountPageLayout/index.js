@@ -11,7 +11,6 @@ import DefaultBackdrop from "../../../../commonComponents/Spinner/DefaultSpinner
 
 const AccountPageLayout = ({ classes, userInfo, ordersList, isLoading }) => {
   const { firstName, lastName, gender, email, phone, address } = userInfo;
-  const { addressLine1, city, country } = address;
 
   return (
     <>
@@ -25,9 +24,7 @@ const AccountPageLayout = ({ classes, userInfo, ordersList, isLoading }) => {
             gender={gender}
             email={email}
             phone={phone}
-            addressLine1={addressLine1}
-            city={city}
-            country={country}
+            address={address}
           />
           <Card className={classes.cardWrapper}>
             {ordersList?.map((order) => {

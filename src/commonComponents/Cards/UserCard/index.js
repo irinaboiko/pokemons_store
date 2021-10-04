@@ -11,19 +11,21 @@ const UserCard = ({
   gender,
   email,
   phone,
-  addressLine1,
-  city,
-  country,
+  address,
 }) => {
+  const formattedAddress = Object.values(address)
+    .map((value) => {
+      return value ? value : "-";
+    })
+    .join(", ");
+
   return (
     <Card className={classes.cardWrapper}>
       <Typography variant="h2">{`${firstName} ${lastName}`}</Typography>
       <Typography variant="body1">{`Gender: ${gender}`}</Typography>
       <Typography variant="body1">{`Email: ${email}`}</Typography>
       <Typography variant="body1">{`Phone number: ${phone}`}</Typography>
-      <Typography variant="body1">{`Address: ${
-        addressLine1 ? addressLine1 : "-"
-      }, ${city ? city : "-"}, ${country ? country : "-"}`}</Typography>
+      <Typography variant="body1">{`Address: ${formattedAddress}`}</Typography>
     </Card>
   );
 };
@@ -34,9 +36,7 @@ UserCard.propTypes = {
   gender: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
   phone: PropTypes.string.isRequired,
-  addressLine1: PropTypes.string,
-  city: PropTypes.string,
-  country: PropTypes.string,
+  address: PropTypes.array.isRequired,
 };
 
 export default React.memo(withStyles(styles)(UserCard));

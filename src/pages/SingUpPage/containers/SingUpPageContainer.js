@@ -12,7 +12,7 @@ const SingUpPageContainer = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const { isLoading, isShowModal, errors } = useSelector(
+  const { isLoading, isShowModal, response, errors } = useSelector(
     (state) => state.signUpPage
   );
 
@@ -158,6 +158,7 @@ const SingUpPageContainer = () => {
       isLoading={isLoading}
       isShowModal={isShowModal}
       handleCloseModal={handleCloseModal}
+      successMessage={response.message}
       errors={errors}
       isEmail={isEmail}
       isFirstNameEmpty={isFirstNameEmpty}

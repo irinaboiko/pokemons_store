@@ -27,6 +27,7 @@ const SingUpPageLayout = ({
   handleSubmit,
   isShowModal,
   handleCloseModal,
+  successMessage,
   errors,
   isEmail,
   isFirstNameEmpty,
@@ -179,7 +180,11 @@ const SingUpPageLayout = ({
           </Link>
         </Box>
       </Box>
-      <SignUpSuccessModal open={isShowModal} onClose={handleCloseModal} />
+      <SignUpSuccessModal
+        open={isShowModal}
+        onClose={handleCloseModal}
+        successMessage={successMessage}
+      />
     </Box>
   );
 };

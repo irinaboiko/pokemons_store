@@ -8,7 +8,7 @@ import { ROUTES } from "../../../routes/routesNames";
 
 import styles from "./styles";
 
-const SignUpSuccessModal = ({ classes, open, onClose }) => {
+const SignUpSuccessModal = ({ classes, open, onClose, successMessage }) => {
   return (
     <Modal
       open={open}
@@ -17,7 +17,7 @@ const SignUpSuccessModal = ({ classes, open, onClose }) => {
       aria-describedby="simple-modal-description"
     >
       <Box className={classes.modalBody}>
-        <Typography variant="h6">You are registered successfully</Typography>
+        <Typography variant="h6">{successMessage}</Typography>
         <Link to={ROUTES.LOG_IN_PAGE}>
           <PurpleButton buttonTitle="Log In" />
         </Link>

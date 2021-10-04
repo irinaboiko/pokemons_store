@@ -8,6 +8,7 @@ import navItems from "./config/navItems";
 import PurpleButton from "../Buttons/PurpleButton";
 
 import styles from "./styles";
+import { ROUTES } from "../../routes/routesNames";
 
 const Header = ({ classes }) => {
   const history = useHistory();
