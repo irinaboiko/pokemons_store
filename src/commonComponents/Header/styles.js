@@ -1,7 +1,8 @@
 const styles = () => ({
   headerWrapper: {
     display: "flex",
-    justifyContent: "space-around",
+    justifyContent: "space-between",
+    alignItems: "flex-end",
     padding: 10,
   },
 });

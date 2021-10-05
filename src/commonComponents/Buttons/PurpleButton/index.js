@@ -30,7 +30,7 @@ const PurpleButton = ({
 
 PurpleButton.propTypes = {
   handleOnButtonClick: PropTypes.func,
-  buttonTitle: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
+  buttonTitle: PropTypes.string,
   disabledButtonTitle: PropTypes.string,
   type: PropTypes.string,
   isButtonDisabled: PropTypes.bool,

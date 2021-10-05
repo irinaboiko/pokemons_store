@@ -30,9 +30,16 @@ const ProductDetailsCard = ({
 }) => {
   return (
     <Card className={classes.cart}>
-      <CardMedia image={productImage} component="img" title={productName} />
+      <CardMedia
+        className={classes.productImage}
+        image={productImage}
+        component="img"
+        title={productName}
+      />
       <CardContent>
-        <Typography variant="h2">{productName}</Typography>
+        <Typography className={classes.productName} variant="h2">
+          {productName}
+        </Typography>
         <Typography variant="body1">{`Product ID: ${productId}`}</Typography>
         <Typography variant="h4">{`$${productPrice}`}</Typography>
         <CardActions>

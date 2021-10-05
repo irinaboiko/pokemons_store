@@ -21,11 +21,25 @@ const UserCard = ({
 
   return (
     <Card className={classes.cardWrapper}>
-      <Typography variant="h2">{`${firstName} ${lastName}`}</Typography>
-      <Typography variant="body1">{`Gender: ${gender}`}</Typography>
-      <Typography variant="body1">{`Email: ${email}`}</Typography>
-      <Typography variant="body1">{`Phone number: ${phone}`}</Typography>
-      <Typography variant="body1">{`Address: ${formattedAddress}`}</Typography>
+      <Typography variant="h4" className={classes.caption}>
+        <b>{`${firstName} ${lastName}`}</b>
+      </Typography>
+      <Typography variant="body1">
+        <b>Gender: </b>
+        {gender}
+      </Typography>
+      <Typography variant="body1">
+        <b>Email: </b>
+        {email}
+      </Typography>
+      <Typography variant="body1">
+        <b>Phone: </b>
+        {phone}
+      </Typography>
+      <Typography variant="body1">
+        <b>Address: </b>
+        {formattedAddress}
+      </Typography>
     </Card>
   );
 };

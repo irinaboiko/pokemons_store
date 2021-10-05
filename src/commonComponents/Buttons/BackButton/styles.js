@@ -21,6 +21,13 @@ const styles = () => ({
   arrow: {
     color: "#6e45d2",
   },
+
+  ["@media (max-width: 768px)"]: {
+    buttonContainer: {
+      top: 5,
+      left: 5,
+    },
+  },
 });
 
 export default styles;
