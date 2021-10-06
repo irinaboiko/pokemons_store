@@ -8,7 +8,6 @@ const defaultState = {
     itemsList: [],
   },
   isLoading: false,
-  isChangeQuantity: false,
   isShowModal: false,
   errors: null,
 };
@@ -51,7 +50,6 @@ const cartPageReducer = handleActions(
     [actions.INCREASE_ITEM_QUANTITY_REQUEST]: (state) => {
       return {
         ...state,
-        isChangeQuantity: true,
       };
     },
     [actions.INCREASE_ITEM_QUANTITY_SUCCESS]: (state, { payload }) => {
@@ -72,19 +70,16 @@ const cartPageReducer = handleActions(
 
       return {
         ...state,
-        isChangeQuantity: false,
         cartState: updatedCartState,
       };
     },
     [actions.INCREASE_ITEM_QUANTITY_FAIL]: (state, { payload }) => ({
-      isChangeQuantity: false,
       errors: payload.response,
     }),
 
     [actions.DECREASE_ITEM_QUANTITY_REQUEST]: (state) => {
       return {
         ...state,
-        isChangeQuantity: true,
       };
     },
     [actions.DECREASE_ITEM_QUANTITY_SUCCESS]: (state, { payload }) => {
@@ -105,18 +100,15 @@ const cartPageReducer = handleActions(
 
       return {
         ...state,
-        isChangeQuantity: false,
         cartState: updatedCartState,
       };
     },
     [actions.DECREASE_ITEM_QUANTITY_FAIL]: (state, { payload }) => ({
-      isChangeQuantity: false,
       errors: payload.response,
     }),
 
     [actions.REMOVE_ITEM_FROM_CART_REQUEST]: (state) => ({
       ...state,
-      isChangeQuantity: true,
     }),
     [actions.REMOVE_ITEM_FROM_CART_SUCCESS]: (state, { payload }) => {
       const { cartState, removedItemId } = payload.response;
@@ -140,12 +132,10 @@ const cartPageReducer = handleActions(
 
       return {
         ...state,
-        isChangeQuantity: false,
         cartState: updatedCartState,
       };
     },
     [actions.REMOVE_ITEM_FROM_CART_FAIL]: (state, { payload }) => ({
-      isChangeQuantity: false,
       errors: payload.response,
     }),
 

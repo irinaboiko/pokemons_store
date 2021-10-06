@@ -18,6 +18,7 @@ const DefaultPagination = ({
       }}
       page={currentPage}
       count={pageCount}
+      size="small"
       onChange={onPageChange}
       variant="outlined"
       color="primary"

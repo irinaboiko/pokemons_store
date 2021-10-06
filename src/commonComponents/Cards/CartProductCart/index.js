@@ -1,14 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {
-  Box,
-  Card,
-  CircularProgress,
-  Typography,
-  withStyles,
-} from "@material-ui/core";
-
-import PurpleButton from "../../Buttons/PurpleButton";
+import { Box, Button, Card, Typography, withStyles } from "@material-ui/core";
 
 import styles from "./styles";
 
@@ -19,7 +11,6 @@ const CartProductCart = ({
   imageURL,
   quantity,
   price,
-  isChangeQuantity,
   handleIncrementItem,
   handleDecrementItem,
   handleRemoveItem,
@@ -28,41 +19,41 @@ const CartProductCart = ({
     <Card key={id} className={classes.cartItem}>
       <Box className={classes.itemInfo}>
         <img src={imageURL} alt={name} />
-        <Typography variant="h5">{name}</Typography>
+        <Typography className={classes.productName} variant="h5">
+          {name}
+        </Typography>
       </Box>
       <Box className={classes.itemButtons}>
-        {isChangeQuantity ? (
-          <CircularProgress />
-        ) : (
-          <>
-            <Box className={classes.quantityButtons}>
-              <PurpleButton
-                handleOnButtonClick={() => {
-                  handleDecrementItem(id);
-                }}
-                buttonTitle="-"
-              />
-              <span className={classes.itemQuantity}>{quantity}</span>
-              <PurpleButton
-                handleOnButtonClick={() => {
-                  handleIncrementItem(id);
-                }}
-                buttonTitle="+"
-              />
-            </Box>
-            <PurpleButton
-              handleOnButtonClick={() => {
-                handleRemoveItem(id);
-              }}
-              buttonTitle="Remove"
-            />
-          </>
-        )}
-      </Box>
-      <Box>
+        <Box className={classes.quantityButtons}>
+          <span
+            className={classes.buttonQuantity}
+            onClick={() => {
+              handleDecrementItem(id);
+            }}
+          >
+            -
+          </span>
+          <span className={classes.itemQuantity}>{quantity}</span>
+          <span
+            className={classes.buttonQuantity}
+            onClick={() => {
+              handleIncrementItem(id);
+            }}
+          >
+            +
+          </span>
+        </Box>
         <Typography variant="h6" className={classes.itemPrice}>
           {`$${quantity * price}`}
         </Typography>
+        <span
+          className={classes.removeButton}
+          onClick={() => {
+            handleRemoveItem(id);
+          }}
+        >
+          Remove
+        </span>
       </Box>
     </Card>
   );

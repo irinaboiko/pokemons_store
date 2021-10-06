@@ -1,15 +1,20 @@
 const styles = () => ({
   wrapper: {
-    position: "fixed",
-    top: "50%",
-    left: "50%",
-    //width: 230,
-    transform: "translate(-50%, -50%)",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
     padding: 20,
+    marginTop: 30,
+  },
+  ["@media (min-width: 768px)"]: {
+    wrapper: {
+      position: "fixed",
+      top: "50%",
+      left: "50%",
+      transform: "translate(-50%, -50%)",
+      marginTop: 0,
+    },
   },
   rowWrapper: {
     display: "flex",
@@ -61,6 +66,17 @@ const styles = () => ({
     position: "absolute",
     left: 0,
     marginTop: 5,
+  },
+  ["@media (max-width: 576px)"]: {
+    wrapper: {
+      marginTop: 10,
+    },
+    rowWrapper: {
+      flexDirection: "column",
+    },
+    buttonWrapper: {
+      marginTop: 0,
+    },
   },
 });
 

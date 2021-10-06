@@ -13,7 +13,7 @@ import { CREATE_ORDER_REQUEST } from "../../AccountPage/actions";
 const CartPageContainer = () => {
   const dispatch = useDispatch();
 
-  const { cartState, isLoading, isChangeQuantity, isShowModal } = useSelector(
+  const { cartState, isLoading, isShowModal } = useSelector(
     (state) => state.cartPage
   );
   const { itemsList } = cartState;
@@ -77,7 +77,6 @@ const CartPageContainer = () => {
       handleCreateOrder={handleCreateOrder}
       cartInfo={cartState}
       isLoading={isLoading}
-      isChangeQuantity={isChangeQuantity}
       isShowModal={isShowModal}
       handleCloseModal={handleCloseModal}
       itemsList={itemsList}

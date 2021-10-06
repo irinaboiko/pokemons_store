@@ -53,4 +53,4 @@ const ProductsPageContainer = () => {
   );
 };
 
-export default ProductsPageContainer;
+export default React.memo(ProductsPageContainer);

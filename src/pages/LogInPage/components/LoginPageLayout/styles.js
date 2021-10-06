@@ -1,14 +1,11 @@
 const styles = () => ({
   wrapper: {
-    position: "fixed",
-    top: "40%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
     padding: 20,
+    marginTop: "2rem",
   },
   form: {
     display: "flex",
@@ -44,6 +41,19 @@ const styles = () => ({
     fontSize: 11,
     position: "absolute",
     marginTop: 5,
+  },
+  ["@media (max-width: 576px)"]: {
+    text: {
+      fontSize: "1.1rem",
+    },
+  },
+  ["@media (min-width: 576px)"]: {
+    wrapper: {
+      position: "fixed",
+      top: "40%",
+      left: "50%",
+      transform: "translate(-50%, -50%)",
+    },
   },
 });
 

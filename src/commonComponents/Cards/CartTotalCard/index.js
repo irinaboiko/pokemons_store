@@ -15,7 +15,7 @@ const CartTotalCard = ({
   return (
     <Card className={classes.cardWrapper}>
       <Box>
-        <Typography variant="h4">Total: ${totalPrice}</Typography>
+        <Typography variant="h6">Total: ${totalPrice}</Typography>
       </Box>
       <Box>
         <PurpleButton

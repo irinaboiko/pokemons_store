@@ -17,7 +17,6 @@ const CartPageLayout = ({
   handleCreateOrder,
   cartInfo,
   isLoading,
-  isChangeQuantity,
   isShowModal,
   handleCloseModal,
   itemsList,
@@ -41,7 +40,6 @@ const CartPageLayout = ({
                   imageURL={cartItem.image}
                   quantity={cartItem.quantity}
                   price={cartItem.price}
-                  isChangeQuantity={isChangeQuantity}
                   handleIncrementItem={handleIncrementItem}
                   handleDecrementItem={handleDecrementItem}
                   handleRemoveItem={handleRemoveItem}

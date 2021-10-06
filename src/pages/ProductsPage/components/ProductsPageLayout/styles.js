@@ -1,7 +1,7 @@
 const styles = () => ({
   cardsWrapper: {
     display: "grid",
-    gridTemplateColumns: "repeat(5, 1fr)",
+    gridTemplateColumns: "repeat(auto-fill,minmax(179px, 1fr))",
     gridGap: 20,
     margin: "20px 0",
   },

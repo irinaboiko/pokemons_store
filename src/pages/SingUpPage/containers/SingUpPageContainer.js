@@ -158,7 +158,7 @@ const SingUpPageContainer = () => {
       isLoading={isLoading}
       isShowModal={isShowModal}
       handleCloseModal={handleCloseModal}
-      successMessage={response.message}
+      successMessage={response?.message}
       errors={errors}
       isEmail={isEmail}
       isFirstNameEmpty={isFirstNameEmpty}
