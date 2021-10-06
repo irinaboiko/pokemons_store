@@ -64,4 +64,4 @@ ProductDetailsPageLayout.propTypes = {
   cartItemsList: PropTypes.array.isRequired,
 };
 
-export default React.memo(withStyles(styles)(ProductDetailsPageLayout));
+export default withStyles(styles)(ProductDetailsPageLayout);

@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Box, Button, Card, Typography, withStyles } from "@material-ui/core";
+import { Box, Card, Typography, withStyles } from "@material-ui/core";
 
 import styles from "./styles";
 
-const CartProductCart = ({
+const CartProductCard = ({
   classes,
   id,
   name,
@@ -59,7 +59,7 @@ const CartProductCart = ({
   );
 };
 
-CartProductCart.propTypes = {
+CartProductCard.propTypes = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   imageURL: PropTypes.string.isRequired,
@@ -71,4 +71,4 @@ CartProductCart.propTypes = {
   handleRemoveItem: PropTypes.func.isRequired,
 };
 
-export default React.memo(withStyles(styles)(CartProductCart));
+export default React.memo(withStyles(styles)(CartProductCard));

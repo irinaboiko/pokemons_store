@@ -7,7 +7,7 @@ import CartTotalCard from "../../../../commonComponents/Cards/CartTotalCard";
 import OrderSuccessModal from "../../../../commonComponents/Modals/OrderSuccessModal";
 
 import styles from "./styles";
-import CartProductCart from "../../../../commonComponents/Cards/CartProductCart";
+import CartProductCard from "../../../../commonComponents/Cards/CartProductCard";
 
 const CartPageLayout = ({
   classes,
@@ -33,7 +33,7 @@ const CartPageLayout = ({
           <Box>
             {itemsList?.map((cartItem) => {
               return (
-                <CartProductCart
+                <CartProductCard
                   key={cartItem.id}
                   id={cartItem.id}
                   name={cartItem.name}
