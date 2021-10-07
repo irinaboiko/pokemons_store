@@ -5,6 +5,7 @@ import { ShoppingCart } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 
 import { ROUTES } from "../../../routes/routesNames";
+
 import styles from "./styles";
 
 const CartButton = ({ classes }) => {
